@@ -1,17 +1,22 @@
-<div class="container">
-  <div class="row justify-content-center align-items-center">
+<div class="container-fluid">
+  <div class="d-flex justify-content-center align-items-center" style="min-height:100vh">
+    <div class="col-6 d-flex justify-content-center align-items-center">
+      <img src="../../../assets/docs-sign-in.svg" class="img-fluid" alt="">
+    </div>
     <!-- Login Card -->
-    <aside *ngIf="!accountSelect" class="col-sm-12 col-md-6">
-      <div class="card">
-        <div class="card-body">
-          <p class="text-center"><img src="./../../../assets/capdocs-icon-without-tex.svg" width="172"
-              class="img-fluid"><br><br></p>
+    <aside *ngIf="!accountSelect"
+      class="col-md-6 col-12 bg-white shadow-lg d-flex justify-content-center align-items-center"
+      style="min-height:100vh;height:100%; z-index: 1;">
+      <div class="w-100">
+        <div class="card-body px-5">
+          <p class="text-center"><img src="./../../../assets/capdocs-icon.svg" width="172" class="img-fluid"><br><br>
+          </p>
           <div class="row m-2 p-2" *ngIf="!selectedAddress">
-            <button class="btn buttoncolor p-2 text-white button-primary" (click)="accountSelect = true"
+            <button class="btn p-2 text-white button-confirm" (click)="accountSelect = true"
               [disabled]="!loadedAccounts || loadedAccounts.length === 0">Selecione a conta</button>
           </div>
           <form (ngSubmit)="signIn()" [formGroup]="form" *ngIf="selectedAddress && selectedAddress.length == 42"
-            class="mb-4">
+            class="row mb-4 px-3">
 
             <div class="row text-center">
               <p class="paragraph-address ">{{selectedAddress}}</p>
@@ -42,17 +47,19 @@
               </span>
             </div>
             <div class="form-group d-grid gap-2 mt-2">
-              <button type="submit" class="btn buttoncolor text-white button-text" [disabled]="form.invalid"> Sign in
+              <button type="submit" class="btn button-confirm text-white button-text" [disabled]="form.invalid"> Sign in
               </button>
             </div>
           </form>
           <div class="row m-2 p-2">
-            <button class="btn btn-outline-secondary p-2 button-secondary" [routerLink]="['/accounts/restore']">
+            <button class="btn btn-outline-secondary p-2 button-secondary" [routerLink]="['/accounts/restore']"
+              style="border-radius: 0px;">
               Restaure a conta
             </button>
           </div>
           <div class="row m-2 p-2">
-            <button class="btn btn-outline-secondary p-2 button-secondary" [routerLink]="['/accounts/create']">
+            <button class="btn btn-outline-secondary p-2 button-secondary" [routerLink]="['/accounts/create']"
+              style="border-radius: 0px;">
               Criar carteira
             </button>
           </div>
@@ -60,8 +67,10 @@
       </div>
     </aside>
     <!-- Select -->
-    <aside *ngIf="accountSelect" class="col-sm-12 col-md-6">
-      <div class="card">
+    <aside *ngIf="accountSelect"
+      class="col-md-6 col-12 bg-white shadow-lg d-flex justify-content-center align-items-center"
+      style="min-height:100vh;height:100%; z-index: 1;">
+      <div>
         <div class="card-title">
           <p class="text-center"><img src="./../../../assets/capdocs-icon.svg" width="290"><br><br></p>
           <h4 class="mb-4 mt-1 text-center title-primary">Selecione a conta</h4>
