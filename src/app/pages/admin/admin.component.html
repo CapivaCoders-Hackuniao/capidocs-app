@@ -9,7 +9,7 @@
                     </div>
                     <div class="card-body bg-white">
                         <div class="alert alert-danger">
-                            <p>This page is useless without owner role in the Registry smart contract</p>
+                            <p>Esta página é inútil sem uma função de persona no registro do smart contract</p>
                         </div>
                     </div>
                 </div>
@@ -20,89 +20,89 @@
         <div class="col-md-9">
             <div class="card shadow text-center">
                 <div class="card-header p-2">
-                    <p class="font-weight-bold">Owner admin panel for {{globals.registry.name}}</p>
+                    <p class="font-weight-bold">Painel de administração do proprietário para {{globals.registry.name}}</p>
                 </div>
                 <div class="card-body p-2 text-center">
                     <div class="alert alert-danger">
-                        <strong>Take Caution</strong>
+                        <strong>Tome cuidado</strong>
                     </div>
                     <form [formGroup]="form">
-                        <p class="font-weight-bold">Registry name:</p>
+                        <p class="font-weight-bold">Nome do registro:</p>
                         <div class="d-flex justify-content-center">
                             <div class="col-md-4">
                                 <input #name id="name" name="name" type="text" class="form-control m-2" formControlName="name" [ngClass]="{ 'is-invalid': form.controls.name.invalid && form.controls.name.dirty, 'is-valid': form.controls.name.valid }">
                             </div>
-                            <button class="btn btn-info btn-fab btn-icon btn-round m-2" (click)="changeName(name.value)">Set</button>
+                            <button class="btn btn-info btn-fab btn-icon btn-round m-2" (click)="changeName(name.value)">Definir</button>
                         </div>
                         <div class="text-danger text-center text-bold" *ngIf="form.controls.name.invalid && form.controls.name.dirty">
-                            <p *ngIf="form.controls.name.errors.required">Name is required!</p>
-                            <p *ngIf="form.controls.name.errors.rangeLength">Name must be between 1 and 32 characters!</p>
+                            <p *ngIf="form.controls.name.errors.required">O nome é obrigatório!</p>
+                            <p *ngIf="form.controls.name.errors.rangeLength">O nome deve ter entre 1 e 32 caracteres!</p>
                         </div>
                         <hr width="75%" size="8">
-                        <p class="font-weight-bold">Require role of admin to register Persona:</p>
+                        <p class="font-weight-bold">Exigir a função de administrador para registrar a Persona:</p>
                         <div class="d-flex justify-content-center">
                             <div class="d-flex justify-content-center">
                                 <input #requireRolePersona id="requireRolePersona" name="requireRolePersona" type="checkbox" class="form-control m-2" formControlName="requireRolePersona">
-                                <span *ngIf="requireRolePersona.checked" class="badge badge-primary m-2 p-2">True</span>
-                                <span *ngIf="!requireRolePersona.checked" class="badge badge-danger m-2 p-2">False</span>
+                                <span *ngIf="requireRolePersona.checked" class="badge badge-primary m-2 p-2">Verdadeiro</span>
+                                <span *ngIf="!requireRolePersona.checked" class="badge badge-danger m-2 p-2">Falso</span>
                             </div>
-                            <button class="btn btn-info btn-fab btn-icon btn-round m-2" (click)="changeRequireRolePersona(requireRolePersona.checked)">Set</button>
+                            <button class="btn btn-info btn-fab btn-icon btn-round m-2" (click)="changeRequireRolePersona(requireRolePersona.checked)">Definir</button>
                         </div>
                         <hr width="75%" size="8">
-                        <p class="font-weight-bold">Require role of admin to register Validator:</p>
+                        <p class="font-weight-bold">Exigir função de administrador para registrar o Validador:</p>
                         <div class="d-flex justify-content-center">
                             <div class="d-flex justify-content-center">
                                 <input #requireRoleValidator id="requireRoleValidator" name="requireRoleValidator" type="checkbox" class="form-control m-2" formControlName="requireRoleValidator">
-                                <span *ngIf="requireRoleValidator.checked" class="badge badge-primary m-2 p-2">True</span>
-                                <span *ngIf="!requireRoleValidator.checked" class="badge badge-danger m-2 p-2">False</span>
+                                <span *ngIf="requireRoleValidator.checked" class="badge badge-primary m-2 p-2">Verdadeiro</span>
+                                <span *ngIf="!requireRoleValidator.checked" class="badge badge-danger m-2 p-2">Falso</span>
                             </div>
-                            <button class="btn btn-info btn-fab btn-icon btn-round m-2" (click)="changeRequireRoleValidator(requireRoleValidator.checked)">Set</button>
+                            <button class="btn btn-info btn-fab btn-icon btn-round m-2" (click)="changeRequireRoleValidator(requireRoleValidator.checked)">Definir</button>
                         </div>
                         <hr width="75%" size="8">
-                        <p class="font-weight-bold">Manage factory addresses:</p>
+                        <p class="font-weight-bold">Gerenciar factory addresses:</p>
                         <p>Persona factory address</p>
                         <div class="row m-2">
                             <input #personaFactory id="personaFactory" name="personaFactory" type="text" class="form-control" formControlName="personaFactory" [ngClass]="{ 'is-invalid': form.controls.personaFactory.invalid && form.controls.personaFactory.dirty, 'is-valid': form.controls.personaFactory.valid }">
                         </div>
-                        <p>Validator factory address</p>
+                        <p>Validador factory address</p>
                         <div class="row m-2">
                             <input #validatorFactory id="validatorFactory" name="validatorFactory" type="text" class="form-control" formControlName="validatorFactory" [ngClass]="{ 'is-invalid': form.controls.validatorFactory.invalid && form.controls.validatorFactory.dirty, 'is-valid': form.controls.validatorFactory.valid }">
                         </div>
                         <button class="btn btn-info btn-fab btn-icon btn-round m-2" (click)="updateFactory(personaFactory.value, validatorFactory.value)">Set</button>
                         <hr width="75%" size="8">
-                        <p class="font-weight-bold">Manually create a Persona registry for someone</p>
-                        <p>Nickname:</p>
+                        <p class="font-weight-bold">Crie manualmente um registro de Persona para alguém</p>
+                        <p>Apelido:</p>
                         <div class="row m-2">
                             <input #newPersonaName id="newPersonaName" name="newPersonaName" type="text" class="form-control m-2" formControlName="newPersonaName" [ngClass]="{ 'is-invalid': form.controls.newPersonaName.invalid && form.controls.newPersonaName.dirty, 'is-valid': form.controls.newPersonaName.valid }">
                         </div>
-                        <p>Owner address:</p>
+                        <p>Endereço do proprietário:</p>
                         <div class="row m-2">
                             <input #newPersonaAddress id="newPersonaAddress" name="newPersonaAddress" type="text" class="form-control m-2" formControlName="newPersonaAddress" [ngClass]="{ 'is-invalid': form.controls.newPersonaAddress.invalid && form.controls.newPersonaAddress.dirty, 'is-valid': form.controls.newPersonaName.valid }">
                         </div>
                         <button class="btn btn-info btn-fab btn-icon btn-round m-2" (click)="newPersona(newPersonaName.value, newPersonaAddress.value)">Create</button>
                         <hr width="75%" size="8">
-                        <p class="font-weight-bold">Manually create a Validator registry for someone</p>
-                        <p>Nickname:</p>
+                        <p class="font-weight-bold">Crie manualmente um registro do Validador para alguém</p>
+                        <p>Apelido:</p>
                         <div class="row m-2">
                             <input #newValidatorName id="newValidatorName" name="newValidatorName" type="text" class="form-control m-2" formControlName="newValidatorName" [ngClass]="{ 'is-invalid': form.controls.newValidatorName.invalid && form.controls.newValidatorName.dirty, 'is-valid': form.controls.newPersonaName.valid }">
                         </div>
-                        <p>Owner address:</p>
+                        <p>Endereço do proprietário:</p>
                         <div class="row m-2">
                             <input #newValidatorAddress id="newValidatorAddress" name="newValidatorAddress" type="text" class="form-control m-2" formControlName="newValidatorAddress" [ngClass]="{ 'is-invalid': form.controls.newValidatorAddress.invalid && form.controls.newValidatorAddress.dirty, 'is-valid': form.controls.newPersonaName.valid }">
                         </div>
-                        <p>Owner Public Key:</p>
+                        <p>Chave pública do proprietário:</p>
                         <div class="row m-2">
                             <input #newValidatorPubKey id="newValidatorPubKey" name="newValidatorPubKey" type="text" class="form-control m-2" formControlName="newValidatorPubKey" [ngClass]="{ 'is-invalid': form.controls.newValidatorPubKey.invalid && form.controls.newValidatorPubKey.dirty, 'is-valid': form.controls.newValidatorPubKey.valid }">
                         </div>
-                        <button class="btn btn-info btn-fab btn-icon btn-round m-2" (click)="newValidator(newValidatorName.value, newValidatorAddress.value, newValidatorPubKey.value)">Create</button>
+                        <button class="btn btn-info btn-fab btn-icon btn-round m-2" (click)="newValidator(newValidatorName.value, newValidatorAddress.value, newValidatorPubKey.value)">criar</button>
                         <hr width="75%" size="8">
-                        <p class="font-weight-bold">Manage Personas:</p>
+                        <p class="font-weight-bold">Gerenciar Personas:</p>
                         <table id="PersonaListTable" class="table m-2 p-2">
                             <thead>
                                 <tr>
                                     <th>Index</th>
-                                    <th>Address</th>
-                                    <th>Name</th>
+                                    <th>Endereço</th>
+                                    <th>Nome</th>
                                 </tr>
                             </thead>
                             <tbody *ngFor="let member of globals.registry.roles.PERSONA_ROLE.members">
@@ -110,18 +110,18 @@
                                     <th scope="row" class="font-weight-light font-size-small">{{ member.position }}</th>
                                     <th scope="row" class="font-weight-light font-size-small">{{ member.address }}</th>
                                     <th scope="row" class="font-weight-light font-size-small">{{ member.name }}</th>
-                                    <td><a (click)="revokeRole(globals.registry.roles.PERSONA_ROLE.id,member.address)" class="btn btn-sm btn-danger">Revoke</a></td>
+                                    <td><a (click)="revokeRole(globals.registry.roles.PERSONA_ROLE.id,member.address)" class="btn btn-sm btn-danger">Revogar</a></td>
                                 </tr>
                             </tbody>
                         </table>
                         <hr width="75%" size="8">
-                        <p class="font-weight-bold">Manage Validators:</p>
+                        <p class="font-weight-bold">Gerenciar validadores:</p>
                         <table id="ValidatorListTable" class="table m-2 p-2">
                             <thead>
                                 <tr>
                                     <th>Index</th>
-                                    <th>Address</th>
-                                    <th>Name</th>
+                                    <th>Endereço</th>
+                                    <th>Nome</th>
                                 </tr>
                             </thead>
                             <tbody *ngFor="let member of globals.registry.roles.VALIDATOR_ROLE.members">
@@ -129,30 +129,30 @@
                                     <th scope="row" class="font-weight-light font-size-small">{{ member.position }}</th>
                                     <th scope="row" class="font-weight-light font-size-small">{{ member.address }}</th>
                                     <th scope="row" class="font-weight-light font-size-small">{{ member.name }}</th>
-                                    <td><a (click)="revokeRole(globals.registry.roles.VALIDATOR_ROLE.id,member.address)" class="btn btn-sm btn-danger">Revoke</a></td>
+                                    <td><a (click)="revokeRole(globals.registry.roles.VALIDATOR_ROLE.id,member.address)" class="btn btn-sm btn-danger">Revogar</a></td>
                                 </tr>
                             </tbody>
                         </table>
                         <hr width="75%" size="8">
-                        <p class="font-weight-bold">Manage Admins:</p>
+                        <p class="font-weight-bold">Gerenciar administradores:</p>
                         <table id="AdminsListTable" class="table m-2 p-2">
                             <thead>
                                 <tr>
                                     <th>Index</th>
-                                    <th>Address</th>
+                                    <th>Endereço</th>
                                 </tr>
                             </thead>
                             <tbody *ngFor="let member of globals.registry.roles.ACC_MANAGER_ROLE.members">
                                 <tr>
                                     <th scope="row" class="font-weight-light font-size-small">{{ member.position }}</th>
                                     <th scope="row" class="font-weight-light font-size-small">{{ member.address }}</th>
-                                    <td><a (click)="revokeRole(globals.registry.roles.ACC_MANAGER_ROLE.id,member.address)" class="btn btn-sm btn-danger">Revoke</a></td>
+                                    <td><a (click)="revokeRole(globals.registry.roles.ACC_MANAGER_ROLE.id,member.address)" class="btn btn-sm btn-danger">Revogar</a></td>
                                 </tr>
                             </tbody>
                         </table>
                         <hr width="75%" size="8">
-                        <p class="font-weight-bold">Manually add a role for some smart contract or address</p>
-                        <p>Role:</p>
+                        <p class="font-weight-bold">Adicione manualmente uma função para algum contrato ou endereço inteligente</p>
+                        <p>Função:</p>
                         <div class="row m-2">
                             <select #addRoleId name="addRoleId" class="form-control m-2" id="addRoleId">
                             <option>PERSONA_ROLE</option>
@@ -160,13 +160,13 @@
                             <option>ACC_MANAGER_ROLE</option>
                           </select>
                         </div>
-                        <p>Address:</p>
+                        <p>Endereço:</p>
                         <div class="row m-2">
                             <input #addRoleAddress id="addRoleAddress" name="addRoleAddress" type="text" class="form-control m-2" formControlName="addRoleAddress" [ngClass]="{ 'is-invalid': form.controls.addRoleAddress.invalid && form.controls.addRoleAddress.dirty, 'is-valid': form.controls.newPersonaName.valid }">
                         </div>
-                        <button class="btn btn-info btn-fab btn-icon btn-round m-2" (click)="grantRole(addRoleId.value, addRoleAddress.value)">Grant</button>
+                        <button class="btn btn-info btn-fab btn-icon btn-round m-2" (click)="grantRole(addRoleId.value, addRoleAddress.value)">Conceder</button>
                         <hr width="75%" size="8">
-                        <button class="btn btn-info btn-fab btn-icon btn-round m-2" (click)="refreshInfos()">Refresh</button>
+                        <button class="btn btn-info btn-fab btn-icon btn-round m-2" (click)="refreshInfos()">Atualizar</button>
                     </form>
                 </div>
             </div>
