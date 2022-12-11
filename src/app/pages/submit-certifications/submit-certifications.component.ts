@@ -24,13 +24,13 @@ export class SubmitCertificationsComponent {
 
 	templateTables = [
 		//TODO: Load from file/config/env/etc...
-		{ name: 'Diploma', title: 'Diploma of', message: 'has satisfactorily completed the course of' },
-		{ name: 'Course' },
-		{ name: 'Participation' },
-		{ name: 'Receipt' },
-		{ name: 'Event' },
-		{ name: 'Donation' },
-		{ name: 'Deed' },
+		{ name: 'Diploma', title: 'Diploma de', message: 'concluiu satisfatoriamente o curso de' },
+		{ name: 'Curso' },
+		{ name: 'Participação' },
+		{ name: 'Recibo' },
+		{ name: 'Evento' },
+		{ name: 'Doação' },
+		{ name: 'Ato' },
 	];
 
 	constructor(
@@ -110,14 +110,14 @@ export class SubmitCertificationsComponent {
 			this.form.controls.name.value,
 			this.form.controls.value.value,
 			content,
-			'signature hash',
+			'assinatura hash',
 			'0'
 		);
 	}
 
 	fillTemplate() {
 		this.form.controls.description.setValue(
-			'This certifies that ' +
+			'Isso certifica que ' +
 				this.form.controls.name.value +
 				' ' +
 				this.templateTables[this.templateId].message +
