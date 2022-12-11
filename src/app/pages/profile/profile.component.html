@@ -4,16 +4,43 @@
             <h1 class="title-logged-pages my-5">Profile </h1>
         </div>
         <div class="card p-2">
-
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="profile-picture">
+                        <img src="../../../assets/profile-picture.svg">
+                    </div>
+                    <p class="member-since mt-2">Member Since 11/2000</p>
+                </div>
+                <div *ngFor="let item of infoProfile" class="col-sm-6">
+                    <div class="d-flex flex-column">
+                        <p class="m-0 profile-text-blue">Nome</p>
+                        <p class="profile-text-gray">{{item.name}}</p>
+                    </div>
+                    <div class="d-flex flex-column">
+                        <p class="m-0 profile-text-blue">Celular</p>
+                        <p class="profile-text-gray">{{item.tel}}</p>
+                    </div>
+                    <div class="d-flex flex-column">
+                        <p class="m-0 profile-text-blue">E-mail</p>
+                        <p class="profile-text-gray">{{item.email}}</p>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="d-flex flex-column">
+                        <a class="text-link" href="#">Editar</a>
+                        <a class="text-link" href="#">Alterar senha</a>
+                    </div>
+                </div>
+            </div>
         </div>
         <div *ngFor="let item of infoWallet" class="card p-3 mt-3">
             <div class="d-flex flex-column">
-                <p class="m-0 wallet-addres">Wallet Address</p>
-                <p class="wallet">{{item.wallet}}</p>
+                <p class="m-0 profile-text-blue">Wallet Address</p>
+                <p class="profile-text-gray">{{item.wallet}}</p>
             </div>
             <div class="d-flex flex-column">
-                <p class="m-0 wallet-addres">Wallet Address</p>
-                <p class="wallet">{{item.wallet}}</p>
+                <p class="m-0 profile-text-blue">Wallet Address</p>
+                <p class="profile-text-gray">{{item.wallet}}</p>
             </div>
         </div>
     </div>

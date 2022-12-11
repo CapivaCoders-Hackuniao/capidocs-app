@@ -4,13 +4,23 @@
     border-radius: 20px;
 }
 
-.wallet-addres {
+.member-since {
+    font-weight: 400;
+    font-size: 11px;
+    color: #4D4D4D;
+}
+
+.text-link {
+    color: #2A7FAE;
+}
+
+.profile-text-blue {
     font-weight: 400;
     font-size: 14px;
     color: #006494;
 }
 
-.wallet {
+.profile-text-gray {
     font-weight: 700;
     font-size: 18px;
     color: #4D4D4D;
