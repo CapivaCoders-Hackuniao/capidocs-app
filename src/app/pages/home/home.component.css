@@ -28,5 +28,24 @@
     font-size: 48px;
     line-height: 48px;
     color: #006494;
+}
 
+.subtitle {
+    font-weight: 700;
+    font-size: 34px;
+    line-height: 44.2px;
+    color: #006494;
+}
+
+.subtitle-texte {
+    font-weight: 600;
+    font-size: 16.8px;
+    line-height: 25.02px;
+    color: #0C3459;
+}
+
+@media(max-width: 777px) {
+    .card-text {
+        font-size: 23px;
+    }
 }
