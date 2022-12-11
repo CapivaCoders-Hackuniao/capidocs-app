@@ -1,0 +1,26 @@
+.container {
+    margin-top: 50px;
+}
+
+/* .save-btn{
+    width: 149px;
+}
+
+.download-btn{
+    margin-right: 10px;
+} */
+
+.mneumonic-box{
+    color: #fff;
+    background-color: #000;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    height: 40px;
+}
+
+@media screen and (min-width: 0px) and (max-width: 400px){
+    .mneumonic-box{
+        font-size: 14px;
+    }
+}

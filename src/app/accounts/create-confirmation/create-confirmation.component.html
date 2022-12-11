@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="row justify-content-center align-items-center">
+        <aside class="col-12 col-sm-12 col-md-6">
+            <div class="card">
+                <article class="card-body">
+                    <p class="text-center"><img src="./../../../assets/ziwallet-logo.png" width="290" class="img-fluid"><br></p>
+                    
+                    <span class="text-center">
+                        <p class="paragraph">Sua carteira foi criada.</p>
+                        <p class="paragraph">Crie uma senha para facilitar o acesso.</p>
+                    </span>
+
+                    <form (ngSubmit)="confirm()" [formGroup]="form">
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Senha" formControlName="password" [ngClass]="{ 'is-invalid': form.controls['password'].errors && form.controls['password'].dirty, 'is-valid': form.controls['password'].valid }" />
+                            <span class="text-danger" *ngIf="form.controls['password'].errors && form.controls['password'].dirty">
+                                <p *ngIf="form.controls['password'].errors['required']">Senha é obrigatória!</p>
+                                <p *ngIf="form.controls['password'].errors['minlength'] || form.controls['password'].errors['maxlength']">Password must be between 6 and 15 characters!</p>
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirmação de senha" formControlName="confirmPassword" [ngClass]="{ 'is-invalid': form.errors?.['matching'] && form.controls['confirmPassword'].dirty, 'is-valid': !form.errors?.['matching'] && form.controls['confirmPassword'].dirty}" />
+                            <span class="text-danger" *ngIf="form.errors?.['matching'] && form.controls['confirmPassword'].dirty">
+                                    <p>Senha e confirmação de senha devem ser iguais!</p>
+                                </span>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="accountName" name="accountName" placeholder="Nome da conta" formControlName="accountName"/>
+                        </div>
+                        <div class="form-group d-grid gap-2 mt-2">
+                            <button type="submit" class="btn buttoncolor text-white button-primary button150 float-end mb-5" [disabled]="form.errors"> Confirmar
+                            </button>
+                        </div>
+                    </form>
+                </article>
+            </div>
+        </aside>
+    </div>
+</div>

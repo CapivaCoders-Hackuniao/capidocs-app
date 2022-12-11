@@ -1,0 +1,98 @@
+<div class="container">
+  <div class="row justify-content-center align-items-center">
+    <!-- Login Card -->
+    <aside *ngIf="!accountSelect" class="col-sm-12 col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <p class="text-center"><img src="./../../../assets/ziwallet-logo.png" width="290" class="img-fluid"><br><br></p>
+          <div class="row m-2 p-2" *ngIf="!selectedAddress">
+            <button class="btn buttoncolor p-2 text-white button-primary" (click)="accountSelect = true"
+              [disabled]="!loadedAccounts || loadedAccounts.length === 0">Selecione a conta</button>
+          </div>
+          <form (ngSubmit)="signIn()" [formGroup]="form" *ngIf="selectedAddress && selectedAddress.length == 42"
+            class="mb-4">
+
+            <div class="row text-center">
+              <p class="paragraph-address ">{{selectedAddress}}</p>
+
+            </div>
+            <div class="row text-center">
+              <a href="javascript:void(0)" class="mb-3" (click)="accountSelect = false; selectedAddress = undefined;">Alterar
+                conta</a>
+            </div>
+
+            <div class="form-group">
+              <div class="input-group">
+
+                <input id="password" name="email" class="form-control" type="password" formControlName="password"
+                  placeholder="Senha"
+                  [ngClass]="{ 'is-invalid': form.controls['password'].errors && form.controls['password'].dirty, 'is-valid': form.controls['password'].valid }">
+                <div class="input-group-prepend">
+                  <span class="input-group-text h-100"> <i class="fa fa-lock"></i> </span>
+                </div>
+              </div>
+              <span class="text-danger" *ngIf="form.controls['password'].errors && form.controls['password'].dirty">
+                <p *ngIf="form.controls['password'].errors['required']"> Senha é obrigatória!</p>
+                <p *ngIf="form.controls['password'].errors['minlength'] || form.controls['password'].errors['maxlength']"> Senha
+                  deve ter de 6 a 15 caracteres!</p>
+              </span>
+            </div>
+            <div class="form-group d-grid gap-2 mt-2">
+              <button type="submit" class="btn buttoncolor text-white button-text" [disabled]="form.invalid"> Sign in
+              </button>
+            </div>
+          </form>
+          <div class="row m-2 p-2">
+            <button class="btn btn-outline-secondary p-2 button-secondary" [routerLink]="['/accounts/restore']">
+              Restaure a conta
+            </button>
+          </div>
+          <div class="row m-2 p-2">
+            <button class="btn btn-outline-secondary p-2 button-secondary" [routerLink]="['/accounts/create']">
+              Criar carteira
+            </button>
+          </div>
+        </div>
+      </div>
+    </aside>
+    <!-- Select -->
+    <aside *ngIf="accountSelect" class="col-sm-12 col-md-6">
+      <div class="card">
+        <div class="card-title">
+          <p class="text-center"><img src="./../../../assets/ziwallet-logo.png" width="290" ><br><br></p>
+          <h4 class="mb-4 mt-1 text-center title-primary">Selecione a conta</h4>
+        </div>
+        <div class="card-body">
+          <div class="table-sm table-responsive table-responsive-lg table-responsive-md table-responsive-sm">
+            <table id="table" class="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Nome</th>
+                  <th scope="col">Endereço</th>
+                  <th scope="col"></th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let acc of loadedAccounts; index as i">
+                  <th scope="row">{{i + 1}}</th>
+                  <td>{{acc.name}}</td>
+                  <td class="text-break">{{acc.address}}</td>
+                  <td><a role="button" (click)="accountSelect = false; selectedAddress = acc.address;"><i
+                        class="fa fa-check text-success fs-3"></i></a></td>
+                  <td><a role="button" (click)="deleteAccount(acc.address!)"><i
+                        class="fa fa-close text-danger fs-3"></i></a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-outline-secondary p-2 button-secondary button150 float-end mb-5"
+            (click)="accountSelect = false">Voltar</button>
+        </div>
+      </div>
+    </aside>
+  </div>
+</div>

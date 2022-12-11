@@ -1,0 +1,63 @@
+<div class="container mb-10">
+    <div class="row justify-content-center align-items-center">
+        <aside class="col-12 col-sm-12 col-md-6">
+            <div class="card">
+                <article class="card-body">
+                    <p class="text-center"><img src="./../../../assets/ziwallet-logo.png" width="290" class="img-fluid"><br></p>
+
+                    <span class="text-center">
+                        <h4 class="card-title mb-4 mt-1 title-color">Restaure a conta</h4>
+                        <p class="paragraph">Restaure seu endereço através da frase secreta mneumonic</p>
+                    </span>
+                    <form (ngSubmit)="restore()" [formGroup]="form">
+                        <div class="form-group">
+                            <textarea class="form-control" id="mnemonic" name="mnemonic" rows="3"
+                                formControlName="mnemonic" placeholder="Mneumonic"
+                                [ngClass]="{ 'is-invalid': form.controls['mnemonic'].errors && form.controls['mnemonic'].dirty, 'is-valid': form.controls['mnemonic'].valid }"></textarea>
+                            <span class="text-danger"
+                                *ngIf="form.controls['mnemonic'].errors && form.controls['mnemonic'].dirty">
+                                <p *ngIf="form.controls['mnemonic'].errors['required']">Mneumonic é obrigatório!</p>
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <input id="password" name="password" class="form-control" type="password"
+                                formControlName="password" placeholder="Senha"
+                                [ngClass]="{ 'is-invalid': form.controls['password'].errors && form.controls['password'].dirty, 'is-valid': form.controls['password'].valid }">
+                            <span class="text-danger"
+                                *ngIf="form.controls['password'].errors && form.controls['password'].dirty">
+                                <p *ngIf="form.controls['password'].errors['required']">Senha é obrigatória!</p>
+                                <p
+                                    *ngIf="form.controls['password'].errors['minlength'] || form.controls['password'].errors['maxlength']">
+                                    password must contain 6 to 15
+                                    characters!
+                                </p>
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <input id="confirmPassword" name="confirmPassword" class="form-control" type="password"
+                                formControlName="confirmPassword" placeholder="Confirme a senha"
+                                [ngClass]="{ 'is-invalid': form.errors?.['matching'] && form.controls['confirmPassword'].dirty, 'is-valid': !form.errors?.['matching'] && form.controls['confirmPassword'].dirty}">
+                            <span class="text-danger"
+                                *ngIf="form.errors?.['matching'] && form.controls['confirmPassword'].dirty">
+                                <p>Senha e confirmação de senha devem ser iguais!</p>
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="accountName" name="accountName"
+                                formControlName="accountName" placeholder="Nome da conta" />
+                        </div>
+                        <!-- <div class="form-group">
+                            <label for="accountCompany" class="colortext">Account Company</label>
+                            <input type="text" class="form-control" id="accountName" name="accountCompany"
+                                formControlName="accountCompany" />
+                        </div> -->
+                        <div class="form-group mt-5 text-center buttons">
+                            <button [routerLink]="['/accounts/signin']" class="btn btn-outline-secondary p-2 button-link float-start mb-5"> Voltar </button>
+                            <button type="submit" class="btn buttoncolor text-white button-primary float-end mb-5"> Confirmar </button>
+                        </div>
+                    </form>
+                </article>
+            </div>
+        </aside>
+    </div>
+</div>

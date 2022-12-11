@@ -1,0 +1,48 @@
+.container {
+    margin-top: 50px;
+}
+
+.mneumonic-box {
+    color: #000;
+    background-color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    height: 40px;
+    border:1px solid #000;
+}
+
+.mneumonic-box>a {
+    color: #000;
+    text-decoration: none;
+}
+
+.mneumonic-box>a:visited {
+    color: #000;
+    text-decoration: none;
+}
+
+.mneumonic-select-box {
+    color: #fff;
+    background-color: #C6D94C;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    height: 40px;
+}
+
+.mneumonic-select-box>a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.mneumonic-select-box>a:visited {
+    color: #fff;
+    text-decoration: none;
+}
+
+@media(min-width: 600px) {
+    .buttons>button{
+        width: 150px;
+    }
+}

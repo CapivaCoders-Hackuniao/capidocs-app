@@ -1,0 +1,17 @@
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="ball-clip-rotate-multiple" [fullScreen]="true">
+  <div>
+      <p style="color: white" class="mt-3"> {{globals.loaderMessage}} </p>
+  </div>
+  <div class="progress" *ngIf="globals.showLoader">
+    <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" [style.width.%]="globals.loaderProgress" aria-valuemin="0" aria-valuemax="100">{{globals.loaderProgress.toFixed(2)}}%</div>
+  </div>
+</ngx-spinner>
+<div class="d-flex background-white" id="wrapper" [ngClass]="{toggled: isToogled}">
+    <app-sidebar></app-sidebar>
+    <div id="page-content-wrapper" >
+        <app-nav></app-nav>
+        <div class="container-fluid">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
