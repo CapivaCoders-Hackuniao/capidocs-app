@@ -25,7 +25,7 @@
     <div class="card-shadow p-2 mt-5">
         <div class="row m-2 mt-4">
             <div class="col-md-4"><br>
-                <label for="validate" class="font-archivo font-size-18 font-weight-medium color-blue-first">Selecione o documento para validar</label>
+                <label for="validate" class="font-archivo font-size-18 font-weight-medium color-blue-first">Documento</label>
                 <select #documentToValidate class="form-control" id="documentToValidate" (input)="selectDocument(documentToValidate.value)">
                     <option>Select one</option>
                     <option *ngFor="let doc of globals.persona.documents">{{doc.fieldName}}</option>
