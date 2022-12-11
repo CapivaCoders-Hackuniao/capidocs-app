@@ -25,7 +25,7 @@
     <div class="card-shadow p-2 mt-5">
         <div class="row m-2 mt-4">
             <div class="col-md-4"><br>
-                <label for="validate" class="font-archivo font-size-18 font-weight-medium color-blue-first">Selecione o documento para validar</label>
+                <label for="validate" class="font-archivo font-size-18 font-weight-medium color-blue-first">Documento</label>
                 <select #documentToValidate class="form-control" id="documentToValidate" (input)="selectDocument(documentToValidate.value)">
                     <option>Selecione um</option>
                     <option *ngFor="let doc of globals.persona.documents">{{doc.fieldName}}</option>
@@ -33,7 +33,7 @@
             </div>
             <div class="col-md-8">
                 <br>
-                <label for="validate" class="font-archivo font-size-18 font-weight-medium color-blue-first">Value</label>
+                <label for="validate" class="font-archivo font-size-18 font-weight-medium color-blue-first">Valor</label>
                 <input value="{{selectedDocument ? selectedDocument.value : ''}}" class="form-control url-input" type="text" disabled />
             </div>
         </div>
@@ -43,7 +43,7 @@
                 <section>
                     <div class="col-md">
                         <label for="searchName" class="mr-2 font-archivo font-size-18 font-weight-medium color-blue-first">Valor Hash</label>
-                        <input #searchName class="form-control col-md" type="text" name="searchName" placeholder="name" (input)="selectListbyName(searchName.value)" />
+                        <input #searchName class="form-control col-md" type="text" name="searchName" placeholder="nome" (input)="selectListbyName(searchName.value)" />
                     </div>
                     
                     <div class="table-responsive">   

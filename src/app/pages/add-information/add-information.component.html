@@ -24,7 +24,7 @@
     <div class="card-shadow card-respons position-relative p-4">
         <form class="row mt-5 mb-5" [formGroup]="form">
             <div class="col-md-4 my-2">
-                <label class="font-archivo font-size-18 font-weight-medium color-blue-first" for="documentToAdd">Selecione o tipo de documento para adicionar</label><br>
+                <label class="font-archivo font-size-18 font-weight-medium color-blue-first" for="documentToAdd">Tipo de documento</label><br>
                 <select #documentToAdd id="documentToAdd" formControlName="documentToAdd" (input)="updateReplace(documentToAdd.value)"><option>Selecione um</option><option *ngFor="let item of documentNames">{{item}}</option></select>
             </div>
             <div class="col-md-8 my-2">

@@ -24,7 +24,7 @@
                 [ngClass]="{ 'is-invalid': createPersonaFormGroup.controls.personaName.invalid && createPersonaFormGroup.controls.personaName.dirty, 'is-valid': createPersonaFormGroup.controls.personaName.valid }">
 
               <button class="btn-form btn-primaryX mt-3" (click)="createPersona(personaName.value)"
-                [disabled]="createPersonaFormGroup.invalid">Criar persona</button>
+                [disabled]="createPersonaFormGroup.invalid">Criar Persona</button>
             </div>
             <div class="color-red-primary"
               *ngIf="createPersonaFormGroup.controls.personaName.invalid && createPersonaFormGroup.controls.personaName.dirty">
