@@ -22,6 +22,8 @@ export class SigninComponent {
 	form: FormGroup;
 	password: string;
 
+	balance: string = '0';
+
 	constructor(
 		@Inject(provider) private ethersProvider: ethers.providers.Web3Provider,
 		private fb: FormBuilder,
@@ -45,7 +47,7 @@ export class SigninComponent {
 
 	closeModal(id: string) {
 		this.modalService.close(id);
-  }
+	}
 
 	async signin() {
 		try {
@@ -65,6 +67,8 @@ export class SigninComponent {
 			}
 			const wallet = await this.walletService.decrypt(encryptWallet, this.password);
 			this.globals.userAddress = wallet.address;
+			const balance = await this.globals.ethersProvider.getBalance(this.globals.userAddress);
+			this.globals.balance = ethers.utils.formatEther(balance);
 			this.globals.userWallet = new ethers.Wallet(wallet.privateKey, this.globals.ethersProvider);
 			this.globals.loaderProgress = '';
 			await this.loadContracts();
@@ -87,6 +91,12 @@ export class SigninComponent {
 	}
 
 	async confirm() {
+
+		if (this.globals.balance === '0.0') {
+			this.toastrService.warning('Você deve ter saldo em CELO para continuar');
+			return;
+		}
+
 		this.closeModal('confirmIdentity');
 		if (this.globals.hasPersona) {
 			this.spinner.show();
@@ -94,7 +104,7 @@ export class SigninComponent {
 				this.loaderCallback(progress);
 			}, this.scService);
 			this.spinner.hide();
-			this.globals.registry.loadValidators(() => {}, this.scService);
+			this.globals.registry.loadValidators(() => { }, this.scService);
 		}
 		if (this.globals.hasValidator) {
 			this.spinner.show();

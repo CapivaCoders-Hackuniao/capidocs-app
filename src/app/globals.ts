@@ -9,6 +9,7 @@ export class Globals {
 	ethersProvider: ethers.providers.Web3Provider;
 	userWallet: ethers.Wallet;
 	userAddress: string;
+	balance: string;
 	password: string;
 	persona: Persona;
 	hasPersona: boolean;
