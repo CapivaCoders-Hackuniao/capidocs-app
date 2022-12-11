@@ -105,7 +105,7 @@
                                             <div *ngFor="let field of fieldsToAdd ; let i = index"><label [for]="fieldsToAdd" formArrayName="addField"><input type="checkbox" class="m-2" [formControlName]="i" [id]="fieldsToAdd">{{field}}</label></div>
                                         </div>
                                             <div>
-                                                <button type="button" class="btnX btn-secondX border-0 mb-2 font-poppins font-weight-semibold font-size-16 text-justify" (click)="addSelectedFields()">+ Add</button>
+                                                <button type="button" class="btnX btn-secondX" (click)="addSelectedFields()">Atualizar</button>
                                             </div>
                                                 <div *ngIf="fieldsToRemove.length>0">
                                                     <p class="font-size-18 font-archivo color-blue-first font-weight-semibold mt-3">Remove accepted documents</p>
@@ -115,7 +115,7 @@
                 </form>
             </div>
                 <div class="modal-footer">
-                    <button type="button" class="btnX btn-primaryX font-poppins font-weight-semibold font-size-16" data-dismiss="modal" aria-label="Close">Aplicar</button>
+                    <button type="button" class="btnX btn-primaryX font-poppins font-weight-semibold font-size-16" data-dismiss="modal" aria-label="Close">Fechar</button>
                 </div>
         </div>
     </div>
