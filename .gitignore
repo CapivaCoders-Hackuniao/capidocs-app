@@ -22,7 +22,6 @@ web-build/
 *.app
 *.exe
 *.war
-
 # Large media files
 *.mp4
 *.tiff
@@ -30,7 +29,6 @@ web-build/
 *.flv
 *.mov
 *.wmv
-
 # IDE - VSCode
 .vscode/*
 !.vscode/settings.json
@@ -38,6 +36,5 @@ web-build/
 !.vscode/launch.json
 !.vscode/extensions.json
 .history/*
-
 # yarn lock
 yarn.lock
