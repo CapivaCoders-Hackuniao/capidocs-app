@@ -4,7 +4,7 @@
     </div>
 
     <div class="card-body">
-        <p class="m-0"><span class="font-weight-medium">Certificate:</span> {{certificate.value}}</p>
+        <p class="m-0"><span class="font-weight-medium">Certificado:</span> {{certificate.value}}</p>
         <p *ngIf='certificate.contentObj.description'>{{certificate.contentObj.description}}</p>
 
         <img *ngIf='certificate.contentObj.image' [src]='certificate.contentObj.image'>
@@ -13,8 +13,8 @@
     </div>
 
     <div class="card-footer">
-        <p class="m-0" *ngIf='certificate.contentObj.issuer'><span class="font-weight-medium">Issued by:</span> {{certificate.contentObj.issuer}}</p>
+        <p class="m-0" *ngIf='certificate.contentObj.issuer'><span class="font-weight-medium">Publicado por:</span> {{certificate.contentObj.issuer}}</p>
         <span class="d-block my-1 font-weight-medium" *ngIf='certificate.contentObj.footer'>{{certificate.contentObj.footer}}</span>
-        <small><span class="font-weight-medium">Signature:</span> {{certificate.signature}}</small>
+        <small><span class="font-weight-medium">Assinatura:</span> {{certificate.signature}}</small>
     </div>
 </section>
