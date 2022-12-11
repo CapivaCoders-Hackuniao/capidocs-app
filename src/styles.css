@@ -1,3 +1,7 @@
 .buttoncolor {
-    background-color: #50A037;
-  }
+  background-color: #50A037;
+}
+
+html {
+  height: 100vh;
+}

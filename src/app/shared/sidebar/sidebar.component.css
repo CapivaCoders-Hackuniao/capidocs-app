@@ -1,6 +1,10 @@
 .bg-light {
   background-color: #0C3459 !important;
-  height: 100%;
+  width: 240px;
+}
+
+.img {
+  width: 153px;
 }
 
 .sidebar-heading {
@@ -10,14 +14,13 @@
 
 .nav-item>a {
   color: #fff;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 400;
 }
 
 .item-active {
   color: #fff;
   background-color: rgba(235, 246, 252, 0.2);
-  border-left: 2px solid #16acda;
 }
 
 .nav-item>a:hover {
@@ -38,4 +41,20 @@
   cursor: pointer;
   font-size: 15px;
   margin: 20px 0;
+}
+
+@media(max-width: 490px) {
+  .bg-light {
+    width: 180px;
+  }
+
+  .nav-item>a {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  .img {
+    width: 123px;
+  }
 }

@@ -1,6 +1,6 @@
-<div class="bg-light shadow" id="sidebar-wrapper">
-    <div class="sidebar-heading p-5">
-        <a [routerLink]="['/pages/home']"><img src="../../../assets/icons/white-logo.svg" width="180"></a>
+<div class="bg-light shadow vh-100" id="sidebar-wrapper">
+    <div class="sidebar-heading d-flex justify-content-center py-5">
+        <a [routerLink]="['/pages/home']"><img class="img" src="../../../assets/icons/white-logo.svg"></a>
     </div>
     <ul class="nav flex-column">
         <li class="nav-item ">
@@ -9,22 +9,22 @@
                 Dashboard</a>
         </li>
         <li class="nav-item ">
-            <a [routerLink]="['/pages/wallet-details']" [routerLinkActive]="['item-active']"
+            <a [routerLink]="['/pages/upload-doc']" [routerLinkActive]="['item-active']"
                 class="nav-link list-group-item-action colortext sidebar-menu">
                 <i class="fa fa-plus-square-o"></i>&nbsp; Upload de Doc</a>
         </li>
         <li class="nav-item ">
-            <a [routerLink]="['/pages/balanceof']" [routerLinkActive]="['item-active']"
+            <a [routerLink]="['/pages/assign']" [routerLinkActive]="['item-active']"
                 class="nav-link list-group-item-action colortext sidebar-menu"> <i class="fa fa-file-text-o"></i>&nbsp;
                 Solicitar assinatura</a>
         </li>
         <li class="nav-item ">
-            <a href="{{blockchainExplorer}}address/{{address}}" target="_blank"
+            <a [routerLink]="['/pages/assign-doc']" [routerLinkActive]="['item-active']"
                 class="nav-link list-group-item-action colortext sidebar-menu"> <i class="fa fa-pencil-square-o"></i>
                 &nbsp; Assinar Doc</a>
         </li>
         <li class="nav-item ">
-            <a [routerLink]="['/pages/allowance']" [routerLinkActive]="['item-active']"
+            <a [routerLink]="['/pages/profile']" [routerLinkActive]="['item-active']"
                 class="nav-link list-group-item-action colortext sidebar-menu"> <i class="fa fa-user-o"></i>&nbsp;
                 Perfil</a>
         </li>
