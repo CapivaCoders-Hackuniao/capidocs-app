@@ -7,4 +7,9 @@
   font-size: 48px;
   line-height: 63.84px;
   color: #006494;
+  background-color: #50A037;
+}
+
+html {
+  height: 100vh;
 }
