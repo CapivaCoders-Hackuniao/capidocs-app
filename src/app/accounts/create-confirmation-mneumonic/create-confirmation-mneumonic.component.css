@@ -1,6 +1,16 @@
 .container {
     margin-top: 50px;
-}
+    min-height: 100vh;
+    height: 100%;
+  }
+
+  .button-confirm {
+    background: #0c3459;
+    /* Shadow/Bottom 1 */
+  
+    box-shadow: 0px 2px 10px rgba(25, 1, 52, 0.12);
+    border-radius: 12px;
+  }
 
 .mneumonic-box {
     color: #000;

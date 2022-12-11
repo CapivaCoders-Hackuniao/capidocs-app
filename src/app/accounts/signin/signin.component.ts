@@ -81,6 +81,7 @@ export class SignInComponent implements OnInit {
 			this.globals.userWallet = new ethers.Wallet(wallet.privateKey, this.globals.ethersProvider);
 			this.globals.user.address = wallet.address;
 			this.globals.initLoader('Lendo contratos');
+			console.log('Lendo contratos')
 			await this.walletService.initContracts();
 			this.globals.clearLoader();
 			this.spinner.hide();
