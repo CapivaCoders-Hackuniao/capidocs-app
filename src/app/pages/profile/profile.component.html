@@ -1,6 +1,6 @@
 <section class="px-4 px-md-0 pb-5">
     <div class="pt-3 pb-4">
-        <h1 class="font-size-44 font-archivo font-weight-semibold m-0">Profile and <span class="color-blue-third">Security</span></h1>
+        <h1 class="font-size-44 font-archivo font-weight-semibold m-0">Perfil e <span class="color-blue-third">Segurança</span></h1>
     </div>
 
     <div class="d-flex mb-5 mb-sm-0">
@@ -8,57 +8,57 @@
             <img class="user-img" style="width: 70px" src="../../../assets/img/user.svg" alt="User" />
         </div>
         <div class="align-self-center d-flex">
-            <p class="m-0 ml-4 font-archivo font-size-18 font-weight-medium color-blue-first">Name user</p>
+            <p class="m-0 ml-4 font-archivo font-size-18 font-weight-medium color-blue-first">Nome do usuário</p>
         </div>
     </div>
 
     <div class="d-flex flex-column flex-sm-row justify-content-between py-sm-4">
         <div class="Useraddress card-shadow col-12 col-sm-5 py-3 mb-5 mb-sm-0">
-            <label class="font-archivo font-size-18 font-weight-medium color-blue-first">Wallet Address</label>
+            <label class="font-archivo font-size-18 font-weight-medium color-blue-first">Endereço da Carteira</label>
             <p class="text-break m-0 font-archivo font-size-16 color-gray-first public-key" style="word-break: break-all;">
                 {{ globals.userAddress }}
             </p>
             <a class="d-flex font-poppins font-size-16 font-weight-semibold color-blue-second w-25" (click)="copyToclipBoardAddress(globals.userAddress)">
                 <img class="mr-2" style="width: 14px" src="../../../assets/img-docs/img-copy.svg" alt="" />
-                Copy</a>
+                Copiar</a>
         </div>
 
         <div class="saddress card-shadow col-12 col-sm-5 py-3 mb-5 mb-sm-0">
-            <label class="font-archivo font-size-18 font-weight-medium color-blue-first">Your public key</label>
+            <label class="font-archivo font-size-18 font-weight-medium color-blue-first">Sua chave pública</label>
             <p class="text-break m-0 font-archivo font-size-16 color-gray-first public-key" style="word-break: break-all;">
                 {{ globals.userWallet.publicKey }}
             </p>
             <a class="d-flex font-poppins font-size-16 font-weight-semibold color-blue-second w-25" (click)="copyToclipBoardAddress(globals.userWallet.publicKey)">
                 <img class="mr-2" style="width: 14px" src="../../../assets/img-docs/img-copy.svg" alt="" />
-                Copy</a>
+                Copiar</a>
         </div>
     </div>
 
     <div class="d-flex flex-column flex-sm-row justify-content-between">
         <div class="saddress card-shadow col-12 col-sm-5 py-3 mb-5 mb-sm-0" *ngIf="globals.hasPersona">
-            <label class="font-archivo font-size-18 font-weight-medium color-blue-first">Address Persona</label>
+            <label class="font-archivo font-size-18 font-weight-medium color-blue-first">Endereço Persona</label>
             <p class="text-break m-0 font-archivo font-size-16 color-gray-first public-key" style="word-break: break-all;">
                 {{ globals.persona.address }}
             </p>
             <a class="d-flex font-poppins font-size-16 font-weight-semibold color-blue-second w-25" (click)="copyToclipBoardAddress(globals.persona.address)">
                 <img class="mr-2" style="width: 14px" src="../../../assets/img-docs/img-copy.svg" alt="" />
-                Copy</a>
+                Copiar</a>
         </div>
 
         <div class="saddress card-shadow col-12 col-sm-5 py-3 mb-5 mb-sm-0" *ngIf="globals.hasValidator">
-            <label class="font-archivo font-size-18 font-weight-medium color-blue-first">Address Validator</label>
+            <label class="font-archivo font-size-18 font-weight-medium color-blue-first">Endereço Validator</label>
             <p class="text-break m-0 font-archivo font-size-16 color-gray-first public-key" style="word-break: break-all;">
                 {{ globals.validator.address }}
             </p>
             <a class="d-flex font-poppins font-size-16 font-weight-semibold color-blue-second w-25" (click)="copyToclipBoardAddress(globals.validator.address)">
                 <img class="mr-2" style="width: 14px" src="../../../assets/img-docs/img-copy.svg" alt="" />
-                Copy</a>
+                Copiar</a>
         </div>
 
         <div class="Private card-shadow col-12 col-sm-5 py-3 mb-5 mb-sm-0">
-            <label class="font-archivo font-size-18 font-weight-medium color-blue-first">Private Key</label>
+            <label class="font-archivo font-size-18 font-weight-medium color-blue-first">Chave privada</label>
             <div class="alert alert-warning" *ngIf="showPrivate">
-                <p class="">Don't share this key with anyone</p>
+                <p class="">Não compartilhe esta chave com ninguém</p>
             </div>
             <p class="text-break m-0 font-archivo font-size-16 color-gray-first public-key" *ngIf="showPrivate" style="word-break: break-all;">
                 {{ globals.userWallet.privateKey }}
@@ -74,7 +74,7 @@
             </p>
             <a class="d-flex font-poppins font-size-16 font-weight-semibold color-blue-second w-25" (click)="copyToclipBoardAddress(globals.userWallet.privateKey)">
                 <img class="mr-2" style="width: 14px" src="../../../assets/img-docs/img-copy.svg" alt="" />
-                Copy</a>
+                Copiar</a>
         </div>
     </div>
 </section>
