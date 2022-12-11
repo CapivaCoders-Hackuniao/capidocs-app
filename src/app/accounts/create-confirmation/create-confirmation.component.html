@@ -20,7 +20,7 @@
                     <input type="password" class="form-control" id="password" name="password" formControlName="password" [ngClass]="{ 'is-invalid': form.controls.password.invalid && form.controls.password.dirty, 'is-valid': form.controls.password.valid }" />
                     <span class="text-danger" *ngIf="form.controls.password.invalid && form.controls.password.dirty">
                         <p *ngIf="form.controls.password.errors.required">Password is required!</p>
-                        <p *ngIf="form.controls.password.errors.rangeLength">Password must be between 6 and 32 characters!</p>
+                        <p *ngIf="form.controls.password.errors.rangeLength">A senha deve conter no mínimo de 6 a 32 caracteres!</p>
                     </span>
                 </div>
 
@@ -29,7 +29,7 @@
                     <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" formControlName="confirmPassword" [ngClass]="{ 'is-invalid': form.controls.confirmPassword.invalid && form.controls.confirmPassword.dirty, 'is-valid': form.controls.confirmPassword.valid }" />
                     <span class="text-danger" *ngIf="form.controls.confirmPassword.invalid && form.controls.confirmPassword.dirty">
                         <p *ngIf="form.controls.confirmPassword.errors.required">Confirm password is required!</p>
-                        <p *ngIf="form.controls.confirmPassword.errors.rangeLength">Password must be between 6 and 32 characters!</p>
+                        <p *ngIf="form.controls.confirmPassword.errors.rangeLength">A senha deve conter no mínimo de 6 a 32 caracteres!</p>
                         <p *ngIf="form.controls.confirmPassword.errors.equalTo">Confirm password must be equal password!</p>
                     </span>
                 </div>
