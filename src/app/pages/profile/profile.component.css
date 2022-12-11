@@ -1,27 +1,13 @@
-.card {
-    background: rgba(235, 246, 252, 0.56);
-    border: 1px solid #EBF6FC;
-    border-radius: 20px;
+a {
+	cursor: pointer !important;
 }
 
-.member-since {
-    font-weight: 400;
-    font-size: 11px;
-    color: #4D4D4D;
+.public-key {
+	height: 100px;
 }
 
-.text-link {
-    color: #2A7FAE;
-}
-
-.profile-text-blue {
-    font-weight: 400;
-    font-size: 14px;
-    color: #006494;
-}
-
-.profile-text-gray {
-    font-weight: 700;
-    font-size: 18px;
-    color: #4D4D4D;
+@media only screen and (max-width: 991px) {
+	.public-key {
+		height: auto;
+	}
 }

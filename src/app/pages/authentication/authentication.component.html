@@ -1,0 +1,224 @@
+<div *ngIf="!globals.hasValidator">
+    <div class="row justify-content-center  mt-5 ">
+        <br><br><br>
+        <div class="col-md-9">
+            <div class="card card-lift--hover shadow border-0 text-center">
+                <div class="card-header bg-danger">
+                    <p class="font-weight-bold text-white">Error</p>
+                </div>
+                <div class="card-body bg-white">
+                    <div class="alert alert-danger">
+                        <p>This page is useless without a validator role in the Registry smart contract</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="globals.hasValidator" class="containerX">
+    <div class="mt-4">
+        <div class="d-flex justify-content-between">
+            <h2 class="font-archivo font-size-44 font-weight-semibold color-blue-first mb-5 ml-4">Validate Documents</h2>
+            <button type="button" class="btn border-0 bg-transparent mx-2 px-2 mb-5" data-placement="top" title="Edit" data-toggle="modal" data-target="#config"><u class="color-blue-second font-poppins font-weight-semibold font-size-16">Configure validator</u></button>
+        </div>
+    </div>
+</div>
+<div *ngIf="globals.hasValidator" class="containerX mt-4">
+    <div class="card-lift--hover border-0 p-2">
+        <div *ngIf="globals.validator.queueSize <= 0" class="alert alert-success text-center m-4 p-4">
+            <strong class="font-inter font-size-30 font-weight-bold color-blue-second">Validation queue empty</strong>
+            <p class="font-poppins color-blue-first font-size-16">There are no pending requests to evaluate</p>
+        </div>
+        <div *ngIf="globals.validator.queueSize > 0" class="text-center mt-2 p-2">
+            <div class="card-shadow">
+                <div class="card-header text-center">
+                    <strong class="font-inter font-size-30 font-weight-bold color-blue-second"> Next validation</strong>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 text-center font-poppins color-blue-first font-size-16">
+                            <p>Persona Address: {{this.globals.validator.nextValidation.persona}}</p>
+                            <p>Document Type: {{this.globals.validator.nextValidation.documentName}}</p>
+                        </div>
+                        <div class="col-md-6 text-center">
+                            <button type="button" class="btnX btn-primaryX btn-md align-middle m-2 p-2" data-placement="top" title="Edit" data-toggle="modal" data-target="#validation" (click)="decryptInfos()">
+                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                                </svg>
+                                <p>Evaluate</p>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 mt-5 text-center" *ngIf="globals.validator.pendingValidations.length > 1">
+            <strong class="font-inter font-size-30 font-weight-bold color-blue-second">Validation queue</strong>
+            <div class="table-responsive mt-2">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Persona</th>
+                            <th scope="col">Document</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of globals.validator.pendingValidations; let i = index">
+                            <td>{{i}}</td>
+                            <td>{{item.persona}}</td>
+                            <td>{{item.document}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--MODAL CHANGE VALIDATOR-->
+
+<div class="modal fade bg-modal" id="config" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true" *ngIf="globals.validator">
+    <div class="modal-dialog  modal-dialog-centered" role="document">
+        <div class="modal-content border-0 card-shadow">
+            <div class="modal-header">
+                <h5 class="modal-title font-poppins color-blue-first font-weight-bold font-size-32" id="validates">Change validator configurations</h5>
+                    <img class="col-sm-3" src="../../../assets/img-docs/img-docs-logo.svg">
+            </div>
+            <div class="modal-body">
+                <form class="container" [formGroup]="formConfig">
+                    <p class="font-size-18 font-archivo color-blue-first font-weight-semibold mb-1 mt-3">Current nickname: <span class="color-gray-first font-size-18">{{globals.validator.name}}</span></p>
+                        <div class="d-flex justify-content-between mb-4">
+                            <input #changeNameInput class="form-control mr-2 mt-1" type="text" name="changeNameInput" formControlName="name" placeholder="NickName" [ngClass]="{ 'is-invalid': formConfig.controls.name.invalid && formConfig.controls.name.dirty, 'is-valid': formConfig.controls.name.valid }" /><button type="button" class="btnX btn-secondX" (click)="changeName(changeNameInput.value)">Update</button>
+                        </div>
+                            <p class="font-size-18 font-archivo color-blue-first font-weight-semibold mb-0">Current payment token: <span class="color-gray-first font-size-18 table-responsive">{{globals.validator.paymentTokenAddress}} {{globals.validator.paymentTokenSymbol}}</span> </p>
+                                <div class="d-flex justify-content-between">
+                                    <input #changeTokenAaddress class="form-control mr-2 mt-2" type="text" name="changeTokenAaddress" formControlName="tokenAaddress" placeholder="Address" [ngClass]="{ 'is-invalid': formConfig.controls.tokenAaddress.invalid && formConfig.controls.tokenAaddress.dirty, 'is-valid': formConfig.controls.tokenAaddress.valid }" /><button type="button" class="btnX btn-secondX mt-1" (click)="changeToken(changeTokenAaddress.value)">Update</button>
+                                </div>
+                                    <div>
+                                        <div>
+                                            <p class="font-size-18 font-archivo color-blue-first font-weight-semibold mt-5">Add accepted documents</p>
+                                        </div>
+                                    </div>
+                                        <div *ngIf="fieldsToAdd.length>0" class="scroll-modal">
+                                            <div *ngFor="let field of fieldsToAdd ; let i = index"><label [for]="fieldsToAdd" formArrayName="addField"><input type="checkbox" class="m-2" [formControlName]="i" [id]="fieldsToAdd">{{field}}</label></div>
+                                        </div>
+                                            <div>
+                                                <button type="button" class="btnX btn-secondX border-0 mb-2 font-poppins font-weight-semibold font-size-16 text-justify" (click)="addSelectedFields()">+ Add</button>
+                                            </div>
+                                                <div *ngIf="fieldsToRemove.length>0">
+                                                    <p class="font-size-18 font-archivo color-blue-first font-weight-semibold mt-3">Remove accepted documents</p>
+                                                        <div class="" *ngFor="let field of fieldsToRemove ; let i = index"><label class="font-size-16 font-archivo scroll-modal" [for]="fieldsToRemove" formArrayName="removeField"><input type="checkbox" class="m-2" [formControlName]="i" [id]="fieldsToRemove">{{field}}</label></div>
+                                                            <button type="button" class="btnX btn-fourX mb-2 font-poppins font-weight-semibold font-size-16" (click)="removeSelectedFields()">Remove</button>
+                                                </div>
+                </form>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btnX btn-primaryX font-poppins font-weight-semibold font-size-16" data-dismiss="modal" aria-label="Close">Apply</button>
+                </div>
+        </div>
+    </div>
+</div>
+<app-footer class="footer-authentication" ></app-footer>
+
+
+<!--Initial Validation-->
+<div class="modal fade" id="validation" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true" *ngIf="globals.validator&&globals.validator.nextValidation">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-primary" id="validates">Validate information</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" *ngIf="decryptJson">
+                <form class="container" [formGroup]="formValidation">
+                    <div class="row">
+                        <div class="col-md-6 text-center overflow-auto border p-1">
+                            <strong>Document</strong><br>
+                            <p>{{globals.validator.nextValidation.documentName}}</p>
+                        </div>
+                        <div class="col-md-6 text-center overflow-auto border p-1">
+                            <strong>Persona</strong><br>
+                            <p>{{globals.validator.nextValidation.persona}}</p>
+                        </div>
+                        <div class="col-md-6 text-center overflow-auto border p-1">
+                            <strong>Value</strong><br>
+                            <p>{{globals.validator.nextValidation.documentValue}}</p>
+                        </div>
+                        <div class="col-md-6 text-center overflow-auto border p-1">
+                            <strong>Hash</strong><br>
+                            <p>{{globals.validator.nextValidation.documentValueHash}}</p>
+                        </div>
+                        <hr width="75%" size="8">
+                        <div class="col-md-6 text-center overflow-auto border p-1">
+                            <strong>Decrypted value</strong><br>
+                            <p>{{this.decryptJson.message}}</p>
+                        </div>
+                        <div class="col-md-6 text-center overflow-auto border p-1">
+                            <strong>Match value</strong><br>
+                            <p>{{this.decryptJson.check}}</p>
+                        </div>
+                        <div class="col-md-6 text-center overflow-auto border p-1">
+                            <strong>Signature</strong><br>
+                            <p>{{this.decryptJson.signature}}</p>
+                        </div>
+                        <div class="col-md-6 text-center overflow-auto border p-1">
+                            <strong>Signer</strong><br>
+                            <p>{{this.decryptJson.signer}}</p>
+                        </div>
+                        <div class="col-md-6 text-center overflow-auto border p-1">
+                            <strong>Owner</strong><br>
+                            <p>{{this.decryptJson.owner}}</p>
+                        </div>
+                        <div class="col-md-6 text-center overflow-auto border p-1">
+                            <strong>Signer valid</strong><br>
+                            <p>{{this.decryptJson.validSigner}}</p>
+                        </div>
+                        <hr width="75%" size="8">
+                        <div class="col-md-12 mt-2" *ngIf="globals.validator.nextValidation.documentLinks.length > 0">
+                            <p class="text-center"><b>Provided Links:</b></p>
+                        </div>
+                        <div *ngFor="let item of globals.validator.nextValidation.documentLinks" class="col-md-12 mt-1">
+                            <p class="text-center">{{item}}</p>
+                        </div>
+                        <div class="col-md-12 mt-2" *ngIf="globals.validator.nextValidation.documentHashes.length > 0">
+                            <p class="text-center"><b>Provided Hashes:</b></p>
+                        </div>
+                        <div *ngFor="let item of globals.validator.nextValidation.documentHashes" class="col-md-12 mt-1">
+                            <p class="text-center">{{item}}</p>
+                        </div>
+                        <div *ngIf='globals.validator.nextValidation.documentLinks.length > 0' class="col-md-12 mt-1 text-center">
+                            <label>Verify document</label><br>
+                            <input type="file" class="mb-2" id="docFile" #docFile>
+                            <button type="button" class="btn btn-primary m-2" (click)="verifyFile(docFile)">Decrypt</button>
+                        </div>
+                        <div *ngIf="fileReady" class="col-md-12 mt-1 text-center">
+                            <a target="_blank" rel="noopener noreferrer" type="button" class="btn btn-primary m-2" [href]="fileURL" download="encrypted">Download</a>
+                        </div>
+                        <div *ngIf="fileReady" class="col-md-12 mt-1 text-center">
+                            <input type="text" class="mb-2" id="docHash" #docHash placeholder="File Hash to check">
+                            <button type="button" class="btn btn-primary m-2" (click)="verifyFileHash(docHash.value)">Check Hash</button>
+                            <p *ngIf='documentFileHashMatch&&documentFileHashMatch.length>0'>File hash: {{documentFileHashMatch}} </p>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <div class="alert alert-warning">
+                                <h5 class="text-center"><b>Is this information valid?</b></h5>
+                                <p class="text-center">The info veracity is your responsibility and it may affect your reputation</p>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="evaluate(2)">Valid</button>
+                <button type="button" class="btn btn-warning" data-dismiss="modal" (click)="evaluate(0)">Not Evaluate</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="evaluate(3)">Not Valid</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Finale Modal Validation-->
+

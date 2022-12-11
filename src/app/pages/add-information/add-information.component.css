@@ -1,0 +1,37 @@
+input[type="file"] {
+	display: none;
+}
+
+@media only screen and (max-width: 991px){
+	.card-respons{
+		margin: 20px !important; 
+	}
+}
+
+@media only screen and (max-width: 991px){
+	.button-respons{
+		font-size: 14px; 
+	}
+}
+
+@media screen and (max-width: 900px) {
+	.img-infos {
+		position: relative;
+		background-image: url("../../../assets/img-docs/imgdriver-cuate 1.png");
+		margin: auto;
+	}
+}
+
+.footer-information{
+	position:absolute;
+  	bottom:0;
+  	width:80%;
+}
+
+@media only screen and (max-width: 991px){
+	.footer-information {
+		width: 100%;
+		position: fixed;
+	  }
+	}
+	

@@ -1,0 +1,30 @@
+
+.table-thead-tr {
+	border-bottom: 1px solid #dee2e6 !important;
+    border-top: 1px solid #dee2e6 !important;
+}
+
+/*Responsivo botões*/
+@media only screen and (max-width: 414px){
+    .buttom-responsivo{
+        margin: 20px 50px 5px 50px;  
+    }
+}
+
+@media only screen and (min-width: 991px) {
+    .button-respon{
+        width: 934px;
+        position: relative;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    .button-resp{
+        position: relative;
+        width: 100%;
+    }
+}
+
+input[type="file"] {
+	display: none;
+}

@@ -1,0 +1,20 @@
+.border-blue-top {
+	border-top: 1px solid var(--color-blue-sixth);
+}
+.banner-register {
+	bottom: 0;
+	right: 0;
+	width: 50%;
+	z-index: -1;
+}
+.rounded-15 {
+	border-radius: 15px;
+	height: 90px;
+	width: 90px;
+}
+.line-height-27 {
+	line-height: 27px;
+}
+.line-height-27 {
+	color: var(--color-blue-second);
+}

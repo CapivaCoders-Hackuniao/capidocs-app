@@ -1,37 +1,20 @@
-.container {
-  margin-top: 50px;
-  min-height: 100vh;
-  height: 100%;
+@media screen and (max-width: 900px) {
+	.img-login {
+		position: relative;
+		background-image: url("../../../assets/img-docs/img-create-account.png");
+		margin: auto;
+	}
+}
+@media screen and (max-width: 900px) {
+	.img-respon {
+		visibility: hidden;
+		display: none !important;
+	}
+}
+@media screen and (max-width: 900px) {
+	.card-repon {
+		height: 100% !important;
+		display: flex;
+	}
 }
 
-/* .save-btn{
-    width: 149px;
-}
-
-.download-btn{
-    margin-right: 10px;
-} */
-
-.mneumonic-box {
-  color: #fff;
-  background-color: #000;
-  font-size: 16px;
-  font-weight: bold;
-  border-radius: 5px;
-  text-align: center;
-  height: 40px;
-}
-
-.button-confirm {
-  background: #0c3459;
-  /* Shadow/Bottom 1 */
-
-  box-shadow: 0px 2px 10px rgba(25, 1, 52, 0.12);
-  border-radius: 12px;
-}
-
-@media screen and (min-width: 0px) and (max-width: 400px) {
-  .mneumonic-box {
-    font-size: 14px;
-  }
-}

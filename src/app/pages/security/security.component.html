@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="mt-4">
+        <h2 class="text-primary">Security</h2>
+        <h6 class="text-primary">
+            <p>Never disclose your backup phrase. Anyone with this phrase can access your data.</p>
+        </h6>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="card bg-transparent" style="width: 100%;">
+            <div class="card-body">
+                <section class="private-key mt-5">
+                    <div class="title">
+                        <img class="pk-img" src="../../../assets/img/PK.svg" alt="Chave">
+                        <p class="pk-title">Private Key</p>
+                        <button (click)="copyToClipboarPrivateKey()">
+                            <img class="clip-board" src="../../../assets/img/clipboard.svg" alt="ClipBoard">
+                        </button>
+                    </div>
+                    <p class="text mt-3">a9ac29cbeb110215ae6d5af5d8731a848160a3a7dabef198b832a38d4b4385e2</p>
+                </section>
+                <section class="mnemonic mt-5">
+                    <div class="title">
+                        <img class="lock-img" src="../../../assets/img/lock.svg" alt="Lock">
+                        <p class="mnemonic-title">Mnemonic</p>
+                        <button (click)="copyToClipboarMnemonic()">
+                            <img class="clip-board" src="../../../assets/img/clipboard.svg" alt="ClipBoard">
+                        </button>
+                    </div>
+                    <p class="text mt-3">{{mnemonic}}
+                    </p>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>

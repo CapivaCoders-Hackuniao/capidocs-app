@@ -1,0 +1,50 @@
+.btn-fourX {
+    border: 2px solid var(--color-red-primary);
+    background: none;
+    color: var(--color-red-primary);
+  }
+
+.btn-fourX:hover {
+    color: var(--color-red-primary);
+  }
+
+.scroll-modal{
+    overflow-y: scroll;
+    height: 185px;
+}
+
+.modal-footer{
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border-top: none;
+}
+
+@media only screen and (max-width: 991px){
+.font-size-32 {
+    font-size: 18px;
+    }
+}
+
+.alert-success{
+  background-color: var(--color-blue-fifth);
+}
+
+@media only screen and (max-width: 991px){
+.font-size-44 {
+    font-size: 25px;
+  }
+}
+
+.footer-authentication{
+  position:absolute;
+  bottom:0;
+  width:80%;
+}
+
+@media only screen and (max-width: 991px){
+  .footer-authentication {
+      width: 100%;
+    }
+  }
+  

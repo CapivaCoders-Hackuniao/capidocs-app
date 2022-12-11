@@ -1,0 +1,165 @@
+<!--<app-navbar></app-navbar>-->
+
+<div *ngIf="!globals.hasPersona">
+    <div class="row justify-content-center  mt-5 ">
+        <br><br><br>
+        <div class="col-md-9">
+            <div class="card card-lift--hover shadow border-0 text-center">
+                <div class="card-header bg-danger">
+                    <p class="font-weight-bold text-white">Error</p>
+                </div>
+                <div class="card-body bg-white">
+                    <div class="alert alert-danger">
+                        <p>This page is useless without a persona role in the Registry smart contract</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Request validation-->
+
+
+<div *ngIf="globals.hasPersona" class="containerX">
+    <div class="card-shadow p-2 mt-5">
+        <div class="row m-2 mt-4">
+            <div class="col-md-4"><br>
+                <label for="validate" class="font-archivo font-size-18 font-weight-medium color-blue-first">Select document to validate</label>
+                <select #documentToValidate class="form-control" id="documentToValidate" (input)="selectDocument(documentToValidate.value)">
+                    <option>Select one</option>
+                    <option *ngFor="let doc of globals.persona.documents">{{doc.fieldName}}</option>
+                </select>
+            </div>
+            <div class="col-md-8">
+                <br>
+                <label for="validate" class="font-archivo font-size-18 font-weight-medium color-blue-first">Value</label>
+                <input value="{{selectedDocument ? selectedDocument.value : ''}}" class="form-control url-input" type="text" disabled />
+            </div>
+        </div>
+        <br>
+        <div class="" style="width: 100%;">
+            <div class="">
+                <section>
+                    <div class="col-md">
+                        <label for="searchName" class="mr-2 font-archivo font-size-18 font-weight-medium color-blue-first">Value Hash</label>
+                        <input #searchName class="form-control col-md" type="text" name="searchName" placeholder="name" (input)="selectListbyName(searchName.value)" />
+                    </div>
+                    
+                    <div class="table-responsive">   
+                    <table class="table mt-5 table-striped table-hover">
+                            <thead>
+                                <tr class="font-inter font-size-14 font-weight-semibold color-blue-first">
+                                    <th class="">
+                                        Id
+                                    </th>
+                                    <th class="">
+                                        Name
+                                    </th>
+                                    <th class="">
+                                        Address
+                                    </th>
+                                    <th class="px-5">
+                                        Action
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="table tbody">
+                                <tr *ngFor="let item of listValidators | paginate: { itemsPerPage: 4, currentPage: pagination }; let i = index">
+                                    <td class="align-middle">
+                                        {{i}}
+                                    </td>
+                                    <td class="align-middle">
+                                        {{item.name}}
+                                    </td>
+                                    <td class="align-middle">
+                                        {{item.address}}
+                                    </td>
+                                    <td class="align-middle">
+
+                                        <button type="button" class="btnX bg-transparent cursor-pointer align-middle justify-content-center" [ngClass]="{'btn-danger': selectedValidator == item, 'btn-success': selectedValidator != item}" data-toggle="tooltip" data-placement="top" title="Select" (click)="selectValidator(item)">
+                                        <img src="../../../assets/img-docs/img-invalidade-documents.svg" class="" *ngIf="selectedValidator == item"> <img src="../../../assets/img-docs/action-Ok.svg" class="" *ngIf="selectedValidator != item">
+                                    </button>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div *ngIf="listValidators.length > 4">
+                            <pagination-controls (pageChange)="pagination = $event"></pagination-controls>
+                          </div>
+                    </div> 
+                </section>
+            </div>
+
+
+            <div class="col-md-12 mt-2">
+                <div class="">
+                    <label for="link" class="font-archivo font-size-18 font-weight-medium color-blue-first">Link</label>
+                    <div class="row px-3">
+                    <input class="form-control col-sm-6 mr-3 my-1" #linkName type="url" id="link" style="flex:1;display:block;min-width:5"> 
+                    <button type="button" class="btnX btn-secondX font-weight-semibold font-poppins font-size-16 col-sm-2 mr-3" (click)="addLinkForm(linkName.value)" [disabled]="!selectedValidator">Add Link</button>
+                    <div class="row px-3 col-sm">
+                    <button type="button" class="btnX btn-secondX col-sm-12 w-100 font-weight-semibold font-poppins font-size-16 mr-3 buttom-responsivo" [disabled]="!selectedValidator" data-toggle="modal" data-target="#file">Encrypt for validator</button>
+                </div>
+                </div>
+                </div>
+            </div>
+
+            <div class="col-md-12" *ngFor="let item of documentLinks">
+                <div class="d-flex mt-1">
+                    <input type="text" value="{{item}}" disabled style="flex:1;display:block;min-width:5" /> <button class="btnX bg-transparent color-red-primary justify-content-center" (click)="removeLinkForm(item)"><img src="../../../assets/img-docs/img-x-remove.svg"></button>
+                </div>
+            </div>
+
+           
+            <div class="col-md-2 btn-validate my-2 ">
+                <button type="button" class="btnX btn-primaryX mb-5 font-weight-semibold font-poppins font-size-16 mt-3 button-respon button-resp" [disabled]="documentToValidate.value==''||documentToValidate.value=='Select one'||!selectedValidator" (click)="sendToValidator()">
+                Send to validate
+            </button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>
+
+
+<div class="modal fade" id="file" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title color-text-blue" id="validates">Insert File</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+
+            </div>
+            <div class="modal-body d-flex flex-column p-3 p-sm-5">
+                <div class="d-flex flex-column align-items-center px-3 py-4 bg-blue-fifth rounded">
+                    <h4 class="font-inter font-weight-bold font-size-30 color-blue-third m-0">Use this application to encrypt the files</h4>
+                    <p class="color-blue-first mb-0 col-sm-6 text-center px-0 mx-auto">Upload this file somewhere and send the link to the validator</p>
+                </div>
+
+                <section class="col-12 col-sm-6 mx-sm-auto px-0 mt-3 d-flex flex-column">
+                    <div class="d-flex justify-content-center align-items-center">
+                        <div class="border rounded col-2 p-3 mr-3">
+                            <img src="../../../assets/img-docs/img-pasta.svg" alt="">
+                        </div>
+                        <div class="ml-3">
+                            <label for="docFile" class="btnX btn-secondX m-0 d-flex justify-content-center align-items-center">Browse file</label>
+                            <input type="file" id="docFile" #docFile>
+                        </div>
+                    </div>
+
+                    <span class="font-size-14 mb-1 mt-4" id='file-name'></span>
+                    <button type="button" class="btn-form btn-primaryX" (click)="encryptFile(docFile)">Encrypt</button>
+                    <a *ngIf="fileReady" target="_blank" rel="noopener noreferrer" type="button" class="btn-form btn-secondX mt-2 d-flex justify-content-center align-items-center" [href]="fileURL" download="encrypted">Download</a>
+
+                    <button type="button" class="btn-form btn-secondX mt-2" data-dismiss="modal">Close</button>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>

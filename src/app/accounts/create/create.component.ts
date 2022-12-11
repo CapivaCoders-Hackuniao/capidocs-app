@@ -16,11 +16,10 @@ import { ToastrService } from 'ngx-toastr';
 export class CreateComponent implements OnInit {
 
   form: FormGroup;
-  mneumonicSplit: string[] | undefined;
 
   private setting = {
     element: {
-      dynamicDownload: null as any
+      dynamicDownload: null as HTMLElement
     }
   }
 
@@ -32,20 +31,18 @@ export class CreateComponent implements OnInit {
     private toastrService: ToastrService
   ) {
     this.form = this.fb.group({
-      mnemonic: ['', Validators.required]
+      mneumonic: ['', Validators.required]
     });
   }
 
   ngOnInit(): void {
     const wallet = this.walletService.create();
 
-    this.storageService.setLocalStorage(LocalStorageKeysEnum.mnemonic, wallet.mnemonic.phrase);
+    this.storageService.setLocalStorage(LocalStorageKeysEnum.mneumonic, wallet.mnemonic.phrase);
 
     this.form.patchValue({
-      mnemonic: wallet.mnemonic.phrase
+      mneumonic: wallet.mnemonic.phrase
     });
-
-    this.mneumonicSplit = wallet.mnemonic.phrase.split(' ');
   }
 
   copyToClipboard() {
@@ -54,7 +51,7 @@ export class CreateComponent implements OnInit {
     selBox.style.left = '0';
     selBox.style.top = '0';
     selBox.style.opacity = '0';
-    selBox.value = this.form.controls['mnemonic'].value;
+    selBox.value = this.form.controls.mneumonic.value;
     document.body.appendChild(selBox);
     selBox.focus();
     selBox.select();
@@ -67,13 +64,13 @@ export class CreateComponent implements OnInit {
   }
 
   confirmation() {
-    this.router.navigate(['/accounts/create-confirmation-mneumonic']);
+    this.router.navigate(['/accounts/create-confirmation']);
   }
 
-  downloadmnemonic() {
+  downloadMneumonic() {
     this.dyanmicDownloadByHtmlTag({
-      fileName: 'mnemonic',
-      text: JSON.stringify(this.form.controls['mnemonic'].value)
+      fileName: 'mneumonic',
+      text: JSON.stringify(this.form.controls.mneumonic.value)
     });
     return;
   }

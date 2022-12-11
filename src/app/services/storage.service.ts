@@ -1,20 +1,21 @@
+import { LocalStorageKeysEnum } from '../models/local-storage-keys.enum';
 import { Injectable } from '@angular/core';
 
 @Injectable()
 export class StorageService {
-	public setLocalStorage(key: string, data: any) {
-		localStorage.setItem(key, JSON.stringify(data));
-	}
+    public setLocalStorage(key: LocalStorageKeysEnum, data: any) {
+        localStorage.setItem(key, JSON.stringify(data));
+    }
 
-	public getLocalStorage(key: string) {
-		return JSON.parse(localStorage.getItem(key)!);
-	}
+    public getLocalStorage(key: LocalStorageKeysEnum) {
+        return JSON.parse(localStorage.getItem(key));
+    }
 
-	public removeLocalStorage(key: string) {
-		localStorage.removeItem(key);
-	}
+    public removeLocalStorage(key: LocalStorageKeysEnum) {
+        localStorage.removeItem(key);
+    }
 
-	public clearLocalStorage() {
-		localStorage.clear();
-	}
+    public clearLocalStorage() {
+        localStorage.clear();
+    }
 }

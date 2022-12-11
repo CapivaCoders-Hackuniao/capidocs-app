@@ -1,72 +1,60 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ethers } from 'ethers';
+import { CustomValidators } from 'ngx-custom-validators';
 import { WalletService } from 'src/app/services/wallet.service';
 import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { SignInService } from 'src/app/services/signin.service';
+import { SigninService } from 'src/app/services/signin.service';
 import { Router } from '@angular/router';
-import { GlobalsService } from 'src/app/services/globals.service';
-import { ethers } from 'ethers';
-import { environment } from 'src/environments/environment';
-import { Account } from 'src/app/models/account.model';
-import { StorageService } from 'src/app/services/storage.service';
-import { LocalStorageKeysEnum } from 'src/app/models/local-storage-keys.enum';
+import { provider } from 'src/app/services/ethers.service';
+import { ModalService } from 'src/app/_modal';
+import { Globals } from 'src/app/globals';
+import { SmartContractsService } from 'src/app/services/smart-contracts.service';
+import { SecurityService } from 'src/app/services/security.service';
 
 @Component({
 	selector: 'app-signin',
 	templateUrl: './signin.component.html',
 	styleUrls: ['./signin.component.css'],
 })
-export class SignInComponent implements OnInit {
-	
+export class SigninComponent {
 	form: FormGroup;
-	password: string | undefined;
-
-	selectedAddress: string | undefined;
-	loadedAccounts: Account[] | undefined;
-	accountSelect: boolean | undefined;
+	password: string;
 
 	constructor(
+		@Inject(provider) private ethersProvider: ethers.providers.Web3Provider,
 		private fb: FormBuilder,
 		private walletService: WalletService,
-		private toastrService: ToastrService,
 		private spinner: NgxSpinnerService,
-		private signInService: SignInService,
+		private signinService: SigninService,
 		private router: Router,
-		private globals: GlobalsService,
-		private storageService: StorageService
+		private toastrService: ToastrService,
+		private scService: SmartContractsService,
+		public modalService: ModalService,
+		public globals: Globals
 	) {
 		this.form = this.fb.group({
-			password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(15)]],
+			password: ['', [Validators.required, CustomValidators.rangeLength([6, 32])]],
 		});
 	}
 
-	ngOnInit() {
-		this.loadAccountData();
+	openModal(id: string) {
+		this.modalService.open(id);
 	}
 
-	loadAccountData() {
-		this.loadedAccounts = [];
-		const localAccounts: Account[] = this.storageService.getLocalStorage(LocalStorageKeysEnum.accounts);
-		if (!localAccounts || localAccounts.length === 0) return;
-		this.loadedAccounts = localAccounts;
-	}
+	closeModal(id: string) {
+		this.modalService.close(id);
+  }
 
-	deleteAccount(address: string) {
-		this.storageService.removeLocalStorage(address);
-		const newAccountsArray = this.loadedAccounts!.filter((acc) => acc.address != address);
-		this.storageService.setLocalStorage(LocalStorageKeysEnum.accounts, newAccountsArray);
-		this.loadAccountData();
-	}
-
-	async signIn() {
+	async signin() {
 		try {
+			this.globals.ethersProvider = await this.ethersProvider;
 			this.spinner.show();
-			this.globals.initLoader('Descriptografando carteira');
-			this.password = this.form.controls['password'].value;
-			const encryptWallet = this.walletService.getFromStorage(this.selectedAddress!);
+			this.password = this.form.controls.password.value;
+			const encryptWallet = this.walletService.getFromStorage();
 			if (!encryptWallet) {
-				const toastr = this.toastrService.error('Carteira não existe, crie ou importe uma!', '', {
+				const toastr = this.toastrService.error('Error', 'Wallet do not exists, create or restore one!', {
 					progressBar: true,
 				});
 				if (toastr)
@@ -75,21 +63,16 @@ export class SignInComponent implements OnInit {
 					});
 				return;
 			}
-			const wallet = await this.walletService.decrypt(encryptWallet, this.password!);
-			this.signInService.setAddress(wallet.address);
-			this.globals.ethersProvider = new ethers.providers.JsonRpcProvider(environment.blockchainNode);
+			const wallet = await this.walletService.decrypt(encryptWallet, this.password);
+			this.globals.userAddress = wallet.address;
 			this.globals.userWallet = new ethers.Wallet(wallet.privateKey, this.globals.ethersProvider);
-			this.globals.user.address = wallet.address;
-			this.globals.initLoader('Lendo contratos');
-			console.log('Lendo contratos')
-			await this.walletService.initContracts();
-			this.globals.clearLoader();
+			this.globals.loaderProgress = '';
+			await this.loadContracts();
 			this.spinner.hide();
-			this.router.navigate(['/pages/home']);
-
+			this.openModal('confirmIdentity');
 		} catch (err) {
-			console.error(err)
-			const toastr = this.toastrService.error('Senha inválida!', '', {
+			console.error(err);
+			const toastr = this.toastrService.error('Error', 'Error to log in!', {
 				progressBar: true,
 			});
 			if (toastr)
@@ -99,11 +82,53 @@ export class SignInComponent implements OnInit {
 		}
 	}
 
-	runError(exception: any) {
-		const toastr = this.toastrService.error(exception.error.errors[0], '', {
-			progressBar: true,
-		});
+	async loadContracts() {
+		await this.scService.loadContracts();
+	}
 
-		if (toastr) toastr.onHidden.subscribe(() => {});
+	async confirm() {
+		this.closeModal('confirmIdentity');
+		if (this.globals.hasPersona) {
+			this.spinner.show();
+			await this.globals.persona.loadPersona((progress: number) => {
+				this.loaderCallback(progress);
+			}, this.scService);
+			this.spinner.hide();
+			this.globals.registry.loadValidators(() => {}, this.scService);
+		}
+		if (this.globals.hasValidator) {
+			this.spinner.show();
+			await this.globals.validator.loadValidator((progress: number) => {
+				this.loaderCallback(progress);
+			}, this.scService);
+			this.spinner.hide();
+		}
+		this.globals.loaderProgress = '';
+		this.router.navigate(['/pages/dashboard']);
+	}
+
+	admin() {
+		this.closeModal('confirmIdentity');
+		this.spinner.show();
+		this.globals.registry
+			.loadRegistryAdmin((progress: number) => {
+				this.loaderCallback(progress);
+			}, this.scService)
+			.then(
+				() => {
+					this.spinner.hide();
+					this.globals.loaderProgress = '';
+					this.router.navigate(['/pages/admin']);
+				},
+				(err) => {
+					console.warn(err);
+					this.spinner.hide();
+				}
+			);
+	}
+
+	loaderCallback(progressBar: number) {
+		if (progressBar == 0) this.globals.loaderProgress = '';
+		else this.globals.loaderProgress = progressBar.toFixed(2);
 	}
 }

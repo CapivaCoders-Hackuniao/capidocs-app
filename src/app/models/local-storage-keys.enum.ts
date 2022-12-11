@@ -1,7 +1,7 @@
 export enum LocalStorageKeysEnum {
-	mnemonic = 'mnemonic',
-	wallet = 'wallet',
-	address = 'address',
-	tokens = 'tokens',
-  accounts = 'accounts'
+    mneumonic = 'mneumonic',
+    wallet = 'wallet',
+    address = 'address',
+    password = 'password',
+    tokens = 'tokens'
 }

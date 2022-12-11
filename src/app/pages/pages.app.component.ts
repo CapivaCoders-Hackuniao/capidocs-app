@@ -1,34 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { SidebarService } from '../services/sidebar.service';
-import { SignInService } from '../services/signin.service';
-import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { GlobalsService } from '../services/globals.service';
+import { Component, OnInit } from "@angular/core";
+import { Globals } from 'src/app/globals';
+import { SidebarService } from "../services/sidebar.service";
 
 @Component({
-  selector: 'pages-app-root',
-  templateUrl: './pages.app.component.html',
-  styleUrls: ['./pages.app.component.css']
+    selector: 'pages-app-root',
+    templateUrl: './pages.app.component.html'
 })
-export class PagesAppComponent implements OnInit {
-  isToogled: boolean | undefined;
-  address: Observable<string> | undefined;
+export class PagesAppComponent {
+	isToogled: boolean;
+    constructor(public globals: Globals,
+        private sidebarService: SidebarService
+    ) { }
 
-  constructor(
-    private sidebarService: SidebarService,
-    private signInService: SignInService,
-    private router: Router,
-    public globals: GlobalsService
-  ) { }
+    ngOnInit(): void {
+        this.sidebarService.currentState.subscribe(a => this.isToogled = a);
+      }
 
-  ngOnInit(): void {
-
-    this.sidebarService.currentState.subscribe(a => this.isToogled = a);
-
-    this.signInService.updateAddressStore();
-    this.signInService.address.subscribe(address => {
-      if (!address)
-        this.router.navigate(['/accounts/signin']);
-    });
-  }
 }

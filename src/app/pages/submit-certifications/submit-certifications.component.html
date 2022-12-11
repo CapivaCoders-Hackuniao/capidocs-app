@@ -1,0 +1,160 @@
+<article class="mt-5 pb-5">
+    <section class="card-shadow px-4 pb-3">
+        <div class="py-4 border-bottom">
+            <h3 class="font-weight-bold font-size-32 color-blue-first m-0">Give certificate</h3>
+        </div>
+
+
+        <div class="alert alert-warning text-center p-4 my-4">
+            <strong>Only send certificates to trusted addresses</strong>
+            <p>There are no pending certificates to approve</p>
+            <p class="m-0 font-size-14">The validity of this certificate in a community depends on your reputation there</p>
+        </div>
+
+        <div class="form-group">
+            <label for="templateSelect" class="font-weight-semibold">Select Template</label>
+            <select #templateSelect class="form-control" id="templateSelect" (input)="templateId = templateSelect.options.selectedIndex - 1">
+                <option>Custom</option>
+                <option *ngFor="let item of templateTables">{{item.name}}</option>
+            </select>
+        </div>
+        <div class="mt-4 mb-2" *ngIf="templateId >= 0">
+            <button class="btn btn-success btn-block" data-toggle="modal" data-target="#inputTemplate">Fill template</button>
+        </div>
+        <form [formGroup]="form" (ngSubmit)="sendCertificateInfo()">
+            <div class="form-group mb-4 mt-5" *ngIf="templateId < 0">
+                <div class="input-group">
+                    <input id="address" name="address" class="form-control m-1" type="text" formControlName="address" [ngClass]="{ 'is-invalid': form.controls.address.invalid && form.controls.address.dirty, 'is-valid': form.controls.address.valid }" placeholder="Persona address">
+                </div>
+                <div class="text-danger text-center text-bold" *ngIf="form.controls.address.invalid && form.controls.address.dirty">
+                    <p *ngIf="form.controls.address.errors.required">Address is required!</p>
+                    <p *ngIf="form.controls.address.errors.rangeLength">Address must be 42 characters long!</p>
+                </div>
+                <div class="input-group">
+                    <input id="name" name="name" class="form-control m-1" type="text" formControlName="name" [ngClass]="{ 'is-invalid': form.controls.name.invalid && form.controls.name.dirty, 'is-valid': form.controls.name.valid }" placeholder="Certificate given name">
+                </div>
+                <div class="text-danger text-center text-bold" *ngIf="form.controls.name.invalid && form.controls.name.dirty">
+                    <p *ngIf="form.controls.name.errors.required">Name is required!</p>
+                    <p *ngIf="form.controls.name.errors.rangeLength">Name must be between 1 and 32 characters!</p>
+                </div>
+                <div class="input-group">
+                    <input id="value" name="value" class="form-control m-1" type="text" formControlName="value" [ngClass]="{ 'is-invalid': form.controls.value.invalid && form.controls.value.dirty, 'is-valid': form.controls.value.valid }" placeholder="Certificate value">
+                </div>
+                <div class="text-danger text-center text-bold" *ngIf="form.controls.value.invalid && form.controls.value.dirty">
+                    <p *ngIf="form.controls.value.errors.required">Value is required!</p>
+                    <p *ngIf="form.controls.value.errors.rangeLength">Value must be up to 256 characters long!</p>
+                </div>
+                <div class="input-group d-flex flex-column flex-sm-row">
+                    <input id="header" name="header" class="w-auto form-control m-1" type="text" formControlName="header" placeholder="Header">
+                    <input id="description" name="description" class="w-auto form-control m-1" type="text" formControlName="description" placeholder="Description">
+                </div>
+                <div class="input-group">
+                    <input id="image" name="image" class="form-control m-1" type="text" formControlName="image" placeholder="Image Url" *ngIf="!upload">
+                    <input id="imageFile" name="imageFile" class="form-control-file m-1" type="file" formControlName="imageUpload" *ngIf="upload">
+                    <a class="btn btn-secondX d-flex justify-content-center align-items-center m-1" (click)="upload=!upload;form.controls.image.setValue('');form.controls.imageUpload.setValue('')">{{upload? "URL" : "Upload"}}</a>
+                </div>
+                <div class="input-group">
+                    <input id="url" name="url" class="form-control m-1" type="text" formControlName="url" placeholder="URL">
+                    <input id="issuer" name="issuer" class="form-control m-1" type="text" formControlName="issuer" placeholder="Issuer">
+                    <input id="footer" name="footer" class="form-control m-1" type="text" formControlName="footer" placeholder="Footer">
+                </div>
+            </div>
+            <div class="form-group mt-4 mb-2">
+                <button type="submit" class="btn-form btn-primaryX" [disabled]="form.invalid">Give</button>
+            </div>
+        </form>
+        <div *ngIf="templateId < 0">
+            <button class="btn-form btn-secondX" [disabled]="form.invalid" (click)="preview()">Preview</button>
+        </div>
+        <div *ngIf="certificatePreview" class="mb-4 mt-4">
+            <app-certificate [certificate]="certificatePreview"></app-certificate>
+        </div>
+
+    </section>
+</article>
+
+
+<!-- MODAL  -->
+<div class="modal fade bg-modal px-4" id="inputTemplate" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document" *ngIf="templateId >= 0">
+        <div class="modal-content border-0">
+            <div class="modal-header align-items-center">
+                <h5 class="modal-title font-weight-bold font-size-32 color-blue-first" id="validates">Insert {{templateTables[templateId].name}} Template</h5>
+                <img class="col-5 col-sm-2 px-0" src="../../../assets/img-docs/img-docs-logo.svg" alt="">
+            </div>
+            <div class="modal-body" *ngIf="templateId >= 0">
+                <form class="container px-0">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <form [formGroup]="form">
+                                <div class="form-group mb-4 mt-5">
+                                    <div class="input-group">
+                                        <input id="value" name="value" class="form-control m-1" type="text" formControlName="value" [ngClass]="{ 'is-invalid': form.controls.value.invalid && form.controls.value.dirty, 'is-valid': form.controls.value.valid }" placeholder="Course name">
+                                        <input id="date" name="date" class="form-control m-1" type="date" formControlName="date" placeholder="Date">
+                                    </div>
+                                    <div class="text-danger text-center text-bold" *ngIf="form.controls.value.invalid && form.controls.value.dirty">
+                                        <p *ngIf="form.controls.value.errors.required">Course name is required!</p>
+                                        <p *ngIf="form.controls.value.errors.rangeLength">Course name must be up to 256 characters long!</p>
+                                    </div>
+                                    <div class="input-group">
+                                        <input id="address" name="address" class="form-control m-1" type="text" formControlName="address" [ngClass]="{ 'is-invalid': form.controls.address.invalid && form.controls.address.dirty, 'is-valid': form.controls.address.valid }" placeholder="Persona address">
+                                    </div>
+                                    <div class="text-danger text-center text-bold" *ngIf="form.controls.address.invalid && form.controls.address.dirty">
+                                        <p *ngIf="form.controls.address.errors.required">Address is required!</p>
+                                        <p *ngIf="form.controls.address.errors.rangeLength">Address must be 42 characters long!</p>
+                                    </div>
+                                    <div class="input-group">
+                                        <input id="name" name="name" class="form-control m-1" type="text" formControlName="name" [ngClass]="{ 'is-invalid': form.controls.name.invalid && form.controls.name.dirty, 'is-valid': form.controls.name.valid }" placeholder="Name">
+                                    </div>
+                                    <div class="text-danger text-center text-bold" *ngIf="form.controls.name.invalid && form.controls.name.dirty">
+                                        <p *ngIf="form.controls.name.errors.required">Name is required!</p>
+                                        <p *ngIf="form.controls.name.errors.rangeLength">Name must be between 1 and 32 characters!</p>
+                                    </div>
+                                    <div class="input-group">
+                                        <input id="url" name="url" class="form-control m-1" type="text" formControlName="url" placeholder="URL">
+                                    </div>
+                                    <div class="input-group">
+                                        <input id="issuer" name="issuer" class="form-control m-1" type="text" formControlName="issuer" placeholder="Issuer">
+                                    </div>
+                                    <div class="input-group">
+                                        <input id="signerName" name="signerName" class="form-control m-1" type="text" formControlName="signerName" placeholder="Signer name">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <hr width="75%" size="8">
+            <p class="text-center">Preview:</p>
+            <section class="table-responsive px-3">
+                <div id="certificate-template-generated" class="certificate-template text-center mx-auto">
+                    <div style="width:740px; height:525px;">
+                        <div style="width:740px; height:525px;  text-align:center;">
+                            <br>
+                            <span style="font-size:40px; font-weight:bold">{{templateTables[templateId].title}} {{form.controls.value.value}}</span><br>
+                            <span style="font-size:30px">Issued by {{form.controls.issuer.value}}</span>
+                            <br><br>
+                            <span style="font-size:20px"><i>This certifies that</i></span>
+                            <br>
+                            <span style="font-size:25px"><b>{{form.controls.name.value}}</b></span><br />
+                            <span style="font-size:20px"><i>{{templateTables[templateId].message}}</i></span> <br />
+                            <span style="font-size:25px">{{form.controls.value.value}}</span> <br />
+                            <br />
+                            <span style="font-size:20px"><i>dated</i></span><br>
+                            <span style="font-size:25px">{{form.controls.date.value}}</span> <br /><br>
+                            <span style="font-size:20px"><i>Signed by</i></span><br>
+                            <span style="font-size:25px">{{form.controls.signerName.value}}</span> <br />
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="modal-footer mt-4">
+                <button type="button" class="col col-sm-auto btnX btn-primaryX mr-1" (click)="fillTemplate()">Insert</button>
+                <button type="button" class="btnX col-sm-auto btn-secondX ml-1" data-dismiss="modal" id="template-modal-close">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
