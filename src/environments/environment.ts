@@ -4,7 +4,7 @@
 
 export const environment = {
 	production: true,
-	blockchainNode: "https://mainnet.mustblockchain.com",
+	blockchainNode: "https://celo-alfajores.infura.io/v3/ad501d4665a343b0a49421de3de7a473",
 	docsList: [
 		"Proof of name",
 		"Proof of birthday",
@@ -25,7 +25,7 @@ export const environment = {
 		"Property deed",
 	],
 	// Voltar ao normal o outro que está comentado e apagar esse
-	registryAddress: "0xcEb2CE6b5BB38F10D8c65C3516A1978E52900200",
+	registryAddress: "0x113767e9386fcd391d2eb07997cff4e671809bd1",
 	scryptDiff: 14,
 
 	// registryAddress: '0x39c3dE0AFd220A2e2c4ccc8515bb544ee83E8e7C',
