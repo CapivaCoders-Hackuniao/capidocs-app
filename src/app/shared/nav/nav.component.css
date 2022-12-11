@@ -1,27 +1,14 @@
-.sidebar-menu{
-    font-size: 14px;
-    background-color: #f8f8f8;
-    border-radius: 5px;
-} 
-
-.sidebar-menu>span>button{
-    border: none;
+.nav {
+    height: 74px;
+    box-shadow: -3px 14px 15px 0px rgba(12, 52, 89, 0.25);
 }
 
-.sidebar-menu>span{
-   padding: 0 10px;
+.icon-out {
+    color: red;
+    font-size: 24px;
 }
 
-.nav-item{
-    margin-left: 10px;
-}
-
-@media screen and (min-width: 0px) and (max-width: 400px){
-    .my-address-label{
-        display: none;
-    }
-
-    .sidebar-menu{
-        font-size: 10px ;
-    }
+.icon {
+    color: black;
+    font-size: 22px;
 }
