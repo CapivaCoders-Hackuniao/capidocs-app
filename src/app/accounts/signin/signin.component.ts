@@ -22,7 +22,7 @@ export class SigninComponent {
 	form: FormGroup;
 	password: string;
 
-	balance: string = '0';
+	balance: string = '0.0';
 
 	constructor(
 		@Inject(provider) private ethersProvider: ethers.providers.Web3Provider,
