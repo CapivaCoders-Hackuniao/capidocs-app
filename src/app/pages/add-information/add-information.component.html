@@ -49,7 +49,7 @@
             </div>
             <div class="col-12 col-sm mt-4 px-3">
 
-                <button type="button" class="btnX btn-secondX font-weight-semibold font-poppins font-size-16" style="width: 230px;" data-toggle="modal" data-target="#file">{{replace ? 'Replace' : 'Add'}} documento</button>
+                <button type="button" class="btnX btn-secondX font-weight-semibold font-poppins font-size-16" style="width: 230px;" data-toggle="modal" data-target="#file">{{replace ? 'Substituir' : 'Adicionar'}} documento</button>
             </div>
             <div class="col-12 col-sm  mt-4">
                 <button type="button" class="btnX btn-primaryX font-weight-semibold font-poppins font-size-16 w-100" (click)="replace ? replaceDocument(documentToAdd.value, docValue.value, valueHash.value) : addDocument(documentToAdd.value, docValue.value, valueHash.value)" [disabled]="documentToAdd.value==''||documentToAdd.value=='Select one'||valueHash.value.length==0">Registrar</button>
@@ -70,7 +70,7 @@
         <div class="modal-content border-0 card-shadow">
             <div class="modal-header align-items-center">
                 <h5 class="modal-title font-weight-bold font-size-32 color-blue-first" id="validates">Insira o arquivo</h5>
-                <img class="col-5 col-sm-2 px-0" src="../../../assets/img-docs/img-docs-logo.svg" alt="">
+                <img class="col-5 col-sm-2 px-0" src="../../../assets/img/capdocs-icon.svg" alt="">
             </div>
             <div class="modal-body d-flex flex-column p-3 p-sm-5">
                 <div class="d-flex flex-column align-items-center px-3 py-4 bg-blue-fifth rounded">

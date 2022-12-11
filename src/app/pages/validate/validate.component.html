@@ -6,11 +6,11 @@
         <div class="col-md-9">
             <div class="card card-lift--hover shadow border-0 text-center">
                 <div class="card-header bg-danger">
-                    <p class="font-weight-bold text-white">Error</p>
+                    <p class="font-weight-bold text-white">Erro</p>
                 </div>
                 <div class="card-body bg-white">
                     <div class="alert alert-danger">
-                        <p>This page is useless without a persona role in the Registry smart contract</p>
+                        <p>Esta página é inútil sem uma função de persona no contrato inteligente do Registro</p>
                     </div>
                 </div>
             </div>
@@ -25,7 +25,7 @@
     <div class="card-shadow p-2 mt-5">
         <div class="row m-2 mt-4">
             <div class="col-md-4"><br>
-                <label for="validate" class="font-archivo font-size-18 font-weight-medium color-blue-first">Select document to validate</label>
+                <label for="validate" class="font-archivo font-size-18 font-weight-medium color-blue-first">Selecione o documento para validar</label>
                 <select #documentToValidate class="form-control" id="documentToValidate" (input)="selectDocument(documentToValidate.value)">
                     <option>Select one</option>
                     <option *ngFor="let doc of globals.persona.documents">{{doc.fieldName}}</option>
@@ -42,7 +42,7 @@
             <div class="">
                 <section>
                     <div class="col-md">
-                        <label for="searchName" class="mr-2 font-archivo font-size-18 font-weight-medium color-blue-first">Value Hash</label>
+                        <label for="searchName" class="mr-2 font-archivo font-size-18 font-weight-medium color-blue-first">Valor Hash</label>
                         <input #searchName class="form-control col-md" type="text" name="searchName" placeholder="name" (input)="selectListbyName(searchName.value)" />
                     </div>
                     
@@ -54,13 +54,13 @@
                                         Id
                                     </th>
                                     <th class="">
-                                        Name
+                                        Nome
                                     </th>
                                     <th class="">
-                                        Address
+                                        Endereço
                                     </th>
                                     <th class="px-5">
-                                        Action
+                                        Ação
                                     </th>
                                 </tr>
                             </thead>
@@ -100,7 +100,7 @@
                     <input class="form-control col-sm-6 mr-3 my-1" #linkName type="url" id="link" style="flex:1;display:block;min-width:5"> 
                     <button type="button" class="btnX btn-secondX font-weight-semibold font-poppins font-size-16 col-sm-2 mr-3" (click)="addLinkForm(linkName.value)" [disabled]="!selectedValidator">Add Link</button>
                     <div class="row px-3 col-sm">
-                    <button type="button" class="btnX btn-secondX col-sm-12 w-100 font-weight-semibold font-poppins font-size-16 mr-3 buttom-responsivo" [disabled]="!selectedValidator" data-toggle="modal" data-target="#file">Encrypt for validator</button>
+                    <button type="button" class="btnX btn-secondX col-sm-12 w-100 font-weight-semibold font-poppins font-size-16 mr-3 buttom-responsivo" [disabled]="!selectedValidator" data-toggle="modal" data-target="#file">Criptografar para validador</button>
                 </div>
                 </div>
                 </div>
@@ -115,7 +115,7 @@
            
             <div class="col-md-2 btn-validate my-2 ">
                 <button type="button" class="btnX btn-primaryX mb-5 font-weight-semibold font-poppins font-size-16 mt-3 button-respon button-resp" [disabled]="documentToValidate.value==''||documentToValidate.value=='Select one'||!selectedValidator" (click)="sendToValidator()">
-                Send to validate
+                    Enviar para validar
             </button>
 
             </div>
@@ -130,7 +130,7 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title color-text-blue" id="validates">Insert File</h5>
+                <h5 class="modal-title color-text-blue" id="validates">Inserir arquivo</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -138,8 +138,8 @@
             </div>
             <div class="modal-body d-flex flex-column p-3 p-sm-5">
                 <div class="d-flex flex-column align-items-center px-3 py-4 bg-blue-fifth rounded">
-                    <h4 class="font-inter font-weight-bold font-size-30 color-blue-third m-0">Use this application to encrypt the files</h4>
-                    <p class="color-blue-first mb-0 col-sm-6 text-center px-0 mx-auto">Upload this file somewhere and send the link to the validator</p>
+                    <h4 class="font-inter font-weight-bold font-size-30 color-blue-third m-0">Use este aplicativo para criptografar os arquivos</h4>
+                    <p class="color-blue-first mb-0 col-sm-6 text-center px-0 mx-auto">Carregue este arquivo em algum lugar e envie o link para o validador</p>
                 </div>
 
                 <section class="col-12 col-sm-6 mx-sm-auto px-0 mt-3 d-flex flex-column">
@@ -148,16 +148,16 @@
                             <img src="../../../assets/img-docs/img-pasta.svg" alt="">
                         </div>
                         <div class="ml-3">
-                            <label for="docFile" class="btnX btn-secondX m-0 d-flex justify-content-center align-items-center">Browse file</label>
+                            <label for="docFile" class="btnX btn-secondX m-0 d-flex justify-content-center align-items-center">Procurar arquivo</label>
                             <input type="file" id="docFile" #docFile>
                         </div>
                     </div>
 
                     <span class="font-size-14 mb-1 mt-4" id='file-name'></span>
-                    <button type="button" class="btn-form btn-primaryX" (click)="encryptFile(docFile)">Encrypt</button>
+                    <button type="button" class="btn-form btn-primaryX" (click)="encryptFile(docFile)">Criptografar</button>
                     <a *ngIf="fileReady" target="_blank" rel="noopener noreferrer" type="button" class="btn-form btn-secondX mt-2 d-flex justify-content-center align-items-center" [href]="fileURL" download="encrypted">Download</a>
 
-                    <button type="button" class="btn-form btn-secondX mt-2" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn-form btn-secondX mt-2" data-dismiss="modal">Fechar</button>
                 </section>
             </div>
         </div>
