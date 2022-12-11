@@ -1,49 +1,60 @@
-<br>
-<div class="row justify-content-md-center">
-    <div class="card  cardBalance mb-3 justify-content-md-center col-md-10">
-        <div class="card-header ">
-            <div class="row">
-                <div class="col-md-9">Balance</div>
-                <div class="col-md-3">
-                    <h6 class="sizeicon  float-end"><i class="fa fa-database"></i></h6>
+<section>
+    <div class="container">
+        <div>
+            <h1 class="title-dashboard mt-5">Bem vindo Jorge Pessoa</h1>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card p-3">
+                    <div class="row">
+                        <div class="col">
+                            <img src="../../../assets/icon-assinatura.svg">
+                        </div>
+                        <div class="col">
+                            <p class="card-text">Aguardando Assinatura</p>
+                        </div>
+                    </div>
+                    <hr class="line-hr">
+                    <div class="d-flex justify-content-end align-items-center">
+                        <p class="card-number">16</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card p-3">
+                    <div class="row">
+                        <div class="col">
+                            <img src="../../../assets/icon-documentos.svg">
+                        </div>
+                        <div class="col">
+                            <p class="card-text">Meus Documentos</p>
+                        </div>
+                    </div>
+                    <hr class="line-hr">
+                    <div class="d-flex justify-content-end align-items-center">
+                        <p class="card-number">9</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card p-3">
+                    <div class="row">
+                        <div class="col">
+                            <img src="../../../assets/icon-expirados.svg">
+                        </div>
+                        <div class="col">
+                            <p class="card-text">Solicitações Expiradas</p>
+                        </div>
+                    </div>
+                    <hr class="line-hr">
+                    <div class="d-flex justify-content-end align-items-center">
+                        <p class="card-number">9</p>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="card-body">
-            <h3>{{globals.user.balance}} {{symbol}}</h3>
-            <h3>{{globals.user.eth}} MATIC <span *ngIf="globals.user.lowGas"><i class="fa fa-warning mx-2 text-warning"
-                        style="opacity: 100;font-size: x-large;"></i></span></h3>
-        </div>
-    </div>&nbsp;
-</div>
-
-<div class="row justify-content-md-center">
-    <div class="card text-dark cardNetwork mb-3 justify-content-md-center col-md-5">
-        <div class="card-header ">
-            <div class="row">
-                <div class="col-md-9">Network</div>
-                <div class="col-md-3">
-
-                    <h6 class="sizeicon float-end"><i class="fa fa-bandcamp"></i></h6>
-                </div>
-            </div>
-        </div>
-        <div class="card-body">
-            <h3>{{network}}</h3>
-        </div>
-    </div>&nbsp;
-    <div class="card text-dark cardStatus mb-3 justify-content-md-center col-md-5">
-        <div class="card-header ">
-            <div class="row">
-                <div class="col-md-9">Status</div>
-                <div class="col-md-3">
-
-                    <h6 class="sizeicon float-end"><i class="fa fa-eye"></i></h6>
-                </div>
-            </div>
-        </div>
-        <div class="card-body">
-            <h3>Active</h3>
+        <div>
+            
         </div>
     </div>
-</div>
+</section>
