@@ -40,7 +40,7 @@
 					}" />
 					<span class="text-danger"
 						*ngIf="form.controls.confirmPassword.invalid && form.controls.confirmPassword.dirty">
-						<p *ngIf="form.controls.confirmPassword.errors.required">Confirm password is required!</p>
+						<p *ngIf="form.controls.confirmPassword.errors.required">Senha de confirmação requerida!</p>
 						<p *ngIf="form.controls.confirmPassword.errors.rangeLength">Password must be between 6 and 32 characters!
 						</p>
 						<p *ngIf="form.controls.confirmPassword.errors.equalTo">Confirm password must be equal password!</p>

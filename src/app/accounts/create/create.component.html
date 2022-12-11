@@ -1,21 +1,29 @@
-<article class="w-100 d-flex justify-content-center align-items-center px-4 py-5 img-login position-relative" style="min-height: 100vh;">
+<article class="w-100 d-flex justify-content-center align-items-center px-4 py-5 img-login position-relative"
+    style="min-height: 100vh;">
     <div class="containerX">
         <div class="mx-auto col-sm-8 py-4 ms-5 mb-3">
             <img class="" style="width: 120px;" src="../../../assets/img-docs/img-create-1.svg">
         </div>
         <section class="pr-sm-5 card-repon">
             <form class="card-shadow col-sm-8 m-auto col-md-6 px-4 py-5" (ngSubmit)="confirmation()" [formGroup]="form">
-                <h2 class="font-inter font-weight-bold color-blue-third mt-4 font-size-32 mb-0">Create Account CapDocs</h2>
-                <label for="meneumonic" class="color-brown-primary font-inter font-size-16"><span class="cursor-pointer" href="javascript:void(0)" (click)="downloadMneumonic()"><u>Download</u></span><span> passphrase or <span class="cursor-pointer" href="javascript:void(0)" (click)="copyToClipboard()"><u>Copy</u></span> passphrase</span></label>
+                <h2 class="font-inter font-weight-bold color-blue-third mt-4 font-size-32 mb-0">Criar conta CapDocs
+                </h2>
+                <label for="meneumonic" class="color-brown-primary font-inter font-size-16"><span class="cursor-pointer"
+                        href="javascript:void(0)" (click)="downloadMneumonic()"><u>Download</u></span><span> frase
+                        secreta
+                        ou <span class="cursor-pointer" href="javascript:void(0)"
+                            (click)="copyToClipboard()"><u>Copie</u></span> frase secreta</span></label>
 
                 <div class="py-2">
-                    <label for="meneumonic" class="font-archivo mt-4 font-weight-medium font-size-18 m-0">Your mneumonic phrase</label>
-                    <textarea class="form-control bg-white text-area" id="mneumonic" name="mneumonic" style="height:auto!important" rows="3" formControlName="mneumonic" readonly></textarea>
+                    <label for="meneumonic" class="font-archivo mt-4 font-weight-medium font-size-18 m-0">Sua frase
+                        mneumônico</label>
+                    <textarea class="form-control bg-white text-area" id="mneumonic" name="mneumonic"
+                        style="height:auto!important" rows="3" formControlName="mneumonic" readonly></textarea>
                 </div>
 
                 <div class="pt-3">
-                    <button type="submit" class="btn-form btn-primaryX mt-3 mb-3">I saved my mneumonic</button>
-                    <button class="btn-form btn-secondX mb-3" [routerLink]="['/accounts/signin']">Back</button>
+                    <button type="submit" class="btn-form btn-primaryX mt-3 mb-3">Salvei o meu mnemônico</button>
+                    <button class="btn-form btn-secondX mb-3" [routerLink]="['/accounts/signin']">Voltar</button>
                 </div>
             </form>
         </section>
@@ -23,6 +31,4 @@
     <section class="d-flex img-respon justify-content-end">
         <img src="../../../assets/img-docs/img-create-account.png" alt="">
     </section>
-
 </article>
-

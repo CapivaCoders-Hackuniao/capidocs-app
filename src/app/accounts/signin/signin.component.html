@@ -3,9 +3,9 @@
     <div class="containerX">
         <div class="col-sm-9 col-md-7 px-0">
             <form class="card-shadow col-sm-9 col-md-7 px-4 py-5" [formGroup]="form" (ngSubmit)="signin()">
-                <h2 class="font-inter font-weight-bold font-size-32 color-blue-third">Sign in Account CapDocs</h2>
+                <h2 class="font-inter font-weight-bold font-size-32 color-blue-third">Entre em sua conta CapDocs</h2>
                 <p class="font-inter color-brown-primary m-0"><u class="cursor-pointer"
-                        [routerLink]="['/accounts/restore']">Restore</u> your account</p>
+                        [routerLink]="['/accounts/restore']">Restaure</u> sua conta</p>
 
                 <div class="py-5">
                     <label for="password"
@@ -17,7 +17,7 @@
 
                     <div class="color-red-primary"
                         *ngIf="form.controls.password.invalid && form.controls.password.dirty">
-                        <p class="m-0" *ngIf="form.controls.password.errors.required">Password is required!</p>
+                        <p class="m-0" *ngIf="form.controls.password.errors.required">Senha requerida!</p>
                         <p class="m-0" *ngIf="form.controls.password.errors.rangeLength">Password must be between 6 and
                             32 characters!</p>
                     </div>
