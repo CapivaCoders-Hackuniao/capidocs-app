@@ -1,8 +1,10 @@
-.container {
-    margin-top: 50px;
+.banner-login {
+	position: absolute;
+	height: 90%;
+	z-index: -1;
 }
 
-.card-footer{
-    background-color: #fff;
-    border: none;
+.banner-login img {
+	border-radius: 6px;
+	object-fit: cover;
 }

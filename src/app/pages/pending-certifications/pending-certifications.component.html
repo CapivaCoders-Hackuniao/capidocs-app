@@ -1,0 +1,13 @@
+<div>
+  <p>Pending Certificates</p>
+  <app-certificate [certificate]="globals.persona.pendingCertificate"></app-certificate>
+
+  <div class="d-flex align-items-center my-3">
+    <button type="button" class="btn bg-green-second p-3 mr-2" data-placement="top" title="Accept" (click)="approve()">
+      <img src="../../../assets/img-docs/check.svg" alt="">
+    </button>
+    <button type="button" class="btn bg-red-primary p-3 ml-2" data-placement="top" title="Discard" (click)="discard()">
+      <img src="../../../assets/img-docs/x-white.svg" alt="">
+    </button>
+  </div>
+</div>

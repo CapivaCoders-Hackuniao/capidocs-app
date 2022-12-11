@@ -1,26 +1,20 @@
-.container {
-    margin-top: 50px;
+@media screen and (max-width: 900px) {
+	.img-login {
+		position: relative;
+		background-image: url("../../../assets/img-docs/img-create-account.png");
+		margin: auto;
+	}
+}
+@media screen and (max-width: 900px) {
+	.img-respon {
+		visibility: hidden;
+		display: none !important;
+	}
+}
+@media screen and (max-width: 900px) {
+	.card-repon {
+		height: 100% !important;
+		display: flex;
+	}
 }
 
-/* .save-btn{
-    width: 149px;
-}
-
-.download-btn{
-    margin-right: 10px;
-} */
-
-.mneumonic-box{
-    color: #fff;
-    background-color: #000;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 5px;
-    height: 40px;
-}
-
-@media screen and (min-width: 0px) and (max-width: 400px){
-    .mneumonic-box{
-        font-size: 14px;
-    }
-}

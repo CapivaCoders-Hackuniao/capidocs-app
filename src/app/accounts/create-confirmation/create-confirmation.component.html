@@ -1,39 +1,48 @@
-<div class="container">
-    <div class="row justify-content-center align-items-center">
-        <aside class="col-12 col-sm-12 col-md-6">
-            <div class="card">
-                <article class="card-body">
-                    <p class="text-center"><img src="./../../../assets/ziwallet-logo.png" width="290" class="img-fluid"><br></p>
-                    
-                    <span class="text-center">
-                        <p class="paragraph">Sua carteira foi criada.</p>
-                        <p class="paragraph">Crie uma senha para facilitar o acesso.</p>
-                    </span>
+<article class="w-100 d-flex justify-content-center img-login align-items-center px-4 py-5 position-relative" style="min-height: 100vh;">
+    <div class="containerX">
+        <div class="mx-auto col-sm-8 py-4 ms-5 mb-3">
+            <img class="" style="width: 120px;" src="../../../assets/img-docs/img-create-2.svg">
+        </div>
+        <section class="pr-sm-5 card-repon">
+            <form class="card-shadow col-sm-8 m-auto col-md-6 px-4 py-5" (ngSubmit)="confirm()" [formGroup]="form">
+                <h2 class="font-inter font-weight-bold color-blue-third mt-4 font-size-32 mb-0">Confirm your mneumonic</h2>
 
-                    <form (ngSubmit)="confirm()" [formGroup]="form">
-                        <div class="form-group">
-                            <input type="password" class="form-control" id="password" name="password" placeholder="Senha" formControlName="password" [ngClass]="{ 'is-invalid': form.controls['password'].errors && form.controls['password'].dirty, 'is-valid': form.controls['password'].valid }" />
-                            <span class="text-danger" *ngIf="form.controls['password'].errors && form.controls['password'].dirty">
-                                <p *ngIf="form.controls['password'].errors['required']">Senha é obrigatória!</p>
-                                <p *ngIf="form.controls['password'].errors['minlength'] || form.controls['password'].errors['maxlength']">Password must be between 6 and 15 characters!</p>
-                            </span>
-                        </div>
-                        <div class="form-group">
-                            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirmação de senha" formControlName="confirmPassword" [ngClass]="{ 'is-invalid': form.errors?.['matching'] && form.controls['confirmPassword'].dirty, 'is-valid': !form.errors?.['matching'] && form.controls['confirmPassword'].dirty}" />
-                            <span class="text-danger" *ngIf="form.errors?.['matching'] && form.controls['confirmPassword'].dirty">
-                                    <p>Senha e confirmação de senha devem ser iguais!</p>
-                                </span>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="accountName" name="accountName" placeholder="Nome da conta" formControlName="accountName"/>
-                        </div>
-                        <div class="form-group d-grid gap-2 mt-2">
-                            <button type="submit" class="btn buttoncolor text-white button-primary button150 float-end mb-5" [disabled]="form.errors"> Confirmar
-                            </button>
-                        </div>
-                    </form>
-                </article>
-            </div>
-        </aside>
+                <div class="py-2">
+                    <label for="meneumonic" class="font-archivo mt-4 font-weight-medium font-size-18 m-0">Confirm your mneumonic phrase</label>
+                    <textarea class="form-control bg-white text-area" id="mneumonic" name="mneumonic" style="height:auto!important" rows="3" formControlName="mneumonic" [ngClass]="{ 'is-invalid': form.controls.mneumonic.invalid && form.controls.mneumonic.dirty, 'is-valid': form.controls.mneumonic.valid }"></textarea>
+                    <span class="text-danger" *ngIf="form.controls.mneumonic.invalid && form.controls.mneumonic.dirty">
+                        <p *ngIf="form.controls.mneumonic.errors.required">Mneumonic is required!</p>
+                    </span>
+                </div>
+
+                <div class="py-2">
+                    <label for="password" class="font-archivo font-size-18 font-weight-medium color-blue-first m-0">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" formControlName="password" [ngClass]="{ 'is-invalid': form.controls.password.invalid && form.controls.password.dirty, 'is-valid': form.controls.password.valid }" />
+                    <span class="text-danger" *ngIf="form.controls.password.invalid && form.controls.password.dirty">
+                        <p *ngIf="form.controls.password.errors.required">Password is required!</p>
+                        <p *ngIf="form.controls.password.errors.rangeLength">Password must be between 6 and 32 characters!</p>
+                    </span>
+                </div>
+
+                <div class="py-2">
+                    <label for="confirmPassword" class="font-archivo font-size-18 font-weight-medium color-blue-first m-0">Confirm Password</label>
+                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" formControlName="confirmPassword" [ngClass]="{ 'is-invalid': form.controls.confirmPassword.invalid && form.controls.confirmPassword.dirty, 'is-valid': form.controls.confirmPassword.valid }" />
+                    <span class="text-danger" *ngIf="form.controls.confirmPassword.invalid && form.controls.confirmPassword.dirty">
+                        <p *ngIf="form.controls.confirmPassword.errors.required">Confirm password is required!</p>
+                        <p *ngIf="form.controls.confirmPassword.errors.rangeLength">Password must be between 6 and 32 characters!</p>
+                        <p *ngIf="form.controls.confirmPassword.errors.equalTo">Confirm password must be equal password!</p>
+                    </span>
+                </div>
+
+                <div class="pt-3">
+                    <button type="submit" class="btn-form btn-primaryX mt-3 mb-3" [disabled]="form.invalid">Confirm</button>
+                    <button class="btn-form btn-secondX mb-3" [routerLink]="['/accounts/signin']">Back</button>
+                </div>
+            </form>
+        </section>
     </div>
-</div>
+    <section class="d-flex img-respon justify-content-end">
+        <img src="../../../assets/img-docs/img-create-account.png" alt="">
+    </section>
+
+</article>

@@ -1,0 +1,99 @@
+<div *ngIf="!globals.hasPersona">
+    <div class="row justify-content-center  mt-5 ">
+        <br><br><br>
+        <div class="col-md-9">
+            <div class="card card-lift--hover shadow border-0 text-center">
+                <div class="card-header bg-danger">
+                    <p class="font-weight-bold text-white">Error</p>
+                </div>
+                <div class="card-body bg-white">
+                    <div class="alert alert-danger">
+                        <p>This page is useless without a persona role in the Registry smart contract</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<article class="">
+    <div>
+        <img src="../../../assets/img-docs/imgdriver-cuate 1.png" style="height: 500px;" class="position-absolute img-infos">
+        
+        <div *ngIf="globals.hasPersona" class="containerX py-5 mt-4">
+
+    <div class="card-shadow card-respons position-relative p-4">
+        <form class="row mt-5 mb-5" [formGroup]="form">
+            <div class="col-md-4 my-2">
+                <label class="font-archivo font-size-18 font-weight-medium color-blue-first" for="documentToAdd">Select document type to add</label><br>
+                <select #documentToAdd id="documentToAdd" formControlName="documentToAdd" (input)="updateReplace(documentToAdd.value)"><option>Select one</option><option *ngFor="let item of documentNames">{{item}}</option></select>
+            </div>
+            <div class="col-md-8 my-2">
+                <label class="font-archivo font-size-18 font-weight-medium color-blue-first" for="docValue">Value</label><br>
+                <div class="d-flex">
+                    <input #docValue formControlName="docValue" id="docValue" type="text" style="flex:1;display:block;min-width:5" (input)="generateHash(docValue.value, valueHash)" />
+                </div>
+            </div>
+            <div class="col-md-12 my-2">
+                <label class="font-archivo font-size-18 font-weight-medium color-blue-first" for="valueHash">Value Hash</label><br>
+                <div class="d-flex">
+                    <input #valueHash id="valueHash" type="text" disabled style="flex:1;display:block;min-width:5" />
+                </div>
+            </div>
+            <div *ngIf="formDocuments.length > 0" class="col-md-12 mt-2 font-archivo font-size-18 font-weight-medium color-blue-first">
+                <p>Document Hashes</p>
+            </div>
+            <div class="col-md-12" *ngFor="let item of formDocuments">
+                <div class="d-flex">
+                    <input type="text" value="{{item}}" disabled style="flex:1;display:block;min-width:5" /> <button class="btnX bg-transparent color-red-primary font-weight-semibold font-inter d-flex justify-content-center align-items-center h-auto" (click)="removeDocumentForm(item)"><img src="../../../assets/img-docs/img-x.svg" class="px-0 col-2 mr-1" alt="">Remove</button>
+                </div>
+            </div>
+            <div class="col-12 col-sm mt-4 px-3">
+
+                <button type="button" class="btnX btn-secondX font-weight-semibold font-poppins font-size-16" style="width: 230px;" data-toggle="modal" data-target="#file">{{replace ? 'Replace' : 'Add'}} document</button>
+            </div>
+            <div class="col-12 col-sm  mt-4">
+                <button type="button" class="btnX btn-primaryX font-weight-semibold font-poppins font-size-16 w-100" (click)="replace ? replaceDocument(documentToAdd.value, docValue.value, valueHash.value) : addDocument(documentToAdd.value, docValue.value, valueHash.value)" [disabled]="documentToAdd.value==''||documentToAdd.value=='Select one'||valueHash.value.length==0">Record</button>
+
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+</article>
+<app-footer class="footer-information"></app-footer>
+
+
+
+<!-- MODAL  -->
+<div class="modal fade bg-modal px-4" id="file" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered mx-auto" role="document">
+        <div class="modal-content border-0 card-shadow">
+            <div class="modal-header align-items-center">
+                <h5 class="modal-title font-weight-bold font-size-32 color-blue-first" id="validates">Insert File</h5>
+                <img class="col-5 col-sm-2 px-0" src="../../../assets/img-docs/img-docs-logo.svg" alt="">
+            </div>
+            <div class="modal-body d-flex flex-column p-3 p-sm-5">
+                <div class="d-flex flex-column align-items-center px-3 py-4 bg-blue-fifth rounded">
+                    <h4 class="font-inter font-weight-bold font-size-30 color-blue-third m-0">Use this same unmodified file with validators</h4>
+                    <p class="color-blue-first mb-0 col-sm-6 text-center px-0 mx-auto">Validators will check this hash with the sent document when evaluating your informations</p>
+                </div>
+
+                <section class="col-12 col-sm-6 mx-sm-auto px-0 mt-3 d-flex flex-column">
+                    <div class="d-flex justify-content-center align-items-center">
+                        <div class="border rounded col-2 p-3 mr-3">
+                            <img src="../../../assets/img-docs/img-pasta.svg" alt="">
+                        </div>
+                        <div class="ml-3">
+                            <label for="docFile" class="btnX btn-secondX m-0 d-flex justify-content-center align-items-center">Browse file</label>
+                            <input type="file" id="docFile" #docFile>
+                        </div>
+                    </div>
+
+                    <span class="font-size-14 mb-1 mt-4" id='file-name'></span>
+                    <button type="button" class="btn-form btn-primaryX" data-dismiss="modal" (click)="hashFile(docFile)">Insert</button>
+                    <button type="button" class="btn-form btn-secondX mt-2" data-dismiss="modal">Cancel</button>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+a {
+	cursor: pointer !important;
+}
+
+.public-key {
+	height: 100px;
+}
+
+@media only screen and (max-width: 991px) {
+	.public-key {
+		height: auto;
+	}
+}

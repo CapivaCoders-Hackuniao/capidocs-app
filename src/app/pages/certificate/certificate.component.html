@@ -1,0 +1,20 @@
+<section class="card">
+    <div class="card-header text-center" *ngIf='certificate.contentObj.header'>
+        <p class="font-size-18 font-weight-semibold m-0">{{certificate.contentObj.header}}</p>
+    </div>
+
+    <div class="card-body">
+        <p class="m-0"><span class="font-weight-medium">Certificate:</span> {{certificate.value}}</p>
+        <p *ngIf='certificate.contentObj.description'>{{certificate.contentObj.description}}</p>
+
+        <img *ngIf='certificate.contentObj.image' [src]='certificate.contentObj.image'>
+
+        <a *ngIf='certificate.contentObj.url' target="_blank" rel="noopener noreferrer" class="d-block mt-4 cursor-pointer color-blue-third font-weight-semibold" [href]='certificate.contentObj.url'>{{certificate.contentObj.url}}</a>
+    </div>
+
+    <div class="card-footer">
+        <p class="m-0" *ngIf='certificate.contentObj.issuer'><span class="font-weight-medium">Issued by:</span> {{certificate.contentObj.issuer}}</p>
+        <span class="d-block my-1 font-weight-medium" *ngIf='certificate.contentObj.footer'>{{certificate.contentObj.footer}}</span>
+        <small><span class="font-weight-medium">Signature:</span> {{certificate.signature}}</small>
+    </div>
+</section>

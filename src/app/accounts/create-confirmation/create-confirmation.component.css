@@ -1,7 +1,19 @@
-.container {
-    margin-top: 50px;
+@media screen and (max-width: 900px) {
+	.img-login {
+		position: relative;
+		background-image: url("../../../assets/img-docs/img-create-account.png");
+		margin: auto;
+	}
 }
-
-.form-group{
-    margin-bottom: 20px;
+@media screen and (max-width: 900px) {
+	.img-respon {
+		visibility: hidden;
+		display: none !important;
+  }
+}
+@media screen and ( max-width: 900px ){ 
+  .card-repon{
+    height: 100% !important;
+    display: flex;
+    }
 }

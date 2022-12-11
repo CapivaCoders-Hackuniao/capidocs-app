@@ -1,13 +1,10 @@
-.container {
-    margin-top: 50px;
+.banner-login {
+	position: absolute;
+	height: 90%;
+	z-index: -1;
 }
 
-.form-group{
-    margin-bottom: 20px;
-}
-
-@media(min-width: 600px) {
-    .buttons>button{
-        width: 150px;
-    }
+.banner-login img {
+	border-radius: 6px;
+	object-fit: cover;
 }
