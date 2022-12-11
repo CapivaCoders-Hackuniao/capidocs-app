@@ -2,8 +2,8 @@
 # Node artifact files
 node_modules/
 .expo/
+.angular/
 dist/
-.angular
 
 npm-debug.*
 *.jks
