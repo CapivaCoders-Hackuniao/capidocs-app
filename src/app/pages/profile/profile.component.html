@@ -1,0 +1,20 @@
+<section>
+    <div class="container">
+        <div>
+            <h1 class="title-logged-pages my-5">Profile </h1>
+        </div>
+        <div class="card p-2">
+
+        </div>
+        <div *ngFor="let item of infoWallet" class="card p-3 mt-3">
+            <div class="d-flex flex-column">
+                <p class="m-0 wallet-addres">Wallet Address</p>
+                <p class="wallet">{{item.wallet}}</p>
+            </div>
+            <div class="d-flex flex-column">
+                <p class="m-0 wallet-addres">Wallet Address</p>
+                <p class="wallet">{{item.wallet}}</p>
+            </div>
+        </div>
+    </div>
+</section>

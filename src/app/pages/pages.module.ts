@@ -16,6 +16,7 @@ import { HomeComponent } from './home/home.component';
 import { SidebarService } from '../services/sidebar.service';
 import { SidebarComponent } from "../shared/sidebar/sidebar.component";
 import { NavComponent } from "../shared/nav/nav.component";
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { NavComponent } from "../shared/nav/nav.component";
         SidebarComponent,
         NavComponent,
         HomeComponent,
+        ProfileComponent,
     ],
     imports: [
         CommonModule,

@@ -1,3 +1,10 @@
 .buttoncolor {
     background-color: #50A037;
   }
+
+.title-logged-pages {
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 63.84px;
+  color: #006494;
+}

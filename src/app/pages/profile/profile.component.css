@@ -1,0 +1,17 @@
+.card {
+    background: rgba(235, 246, 252, 0.56);
+    border: 1px solid #EBF6FC;
+    border-radius: 20px;
+}
+
+.wallet-addres {
+    font-weight: 400;
+    font-size: 14px;
+    color: #006494;
+}
+
+.wallet {
+    font-weight: 700;
+    font-size: 18px;
+    color: #4D4D4D;
+}

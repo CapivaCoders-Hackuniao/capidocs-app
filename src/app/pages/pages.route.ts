@@ -1,3 +1,4 @@
+import { ProfileComponent } from './profile/profile.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -9,6 +10,7 @@ const routerConfig: Routes = [
         path: '', component: PagesAppComponent,
         children: [
             { path: 'home', component: HomeComponent },
+            { path: 'profile', component: ProfileComponent },
         ]
     }
 ];
