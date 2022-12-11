@@ -4,7 +4,8 @@
     <aside *ngIf="!accountSelect" class="col-sm-12 col-md-6">
       <div class="card">
         <div class="card-body">
-          <p class="text-center"><img src="./../../../assets/ziwallet-logo.png" width="290" class="img-fluid"><br><br></p>
+          <p class="text-center"><img src="./../../../assets/ziwallet-logo.png" width="290" class="img-fluid"><br><br>
+          </p>
           <div class="row m-2 p-2" *ngIf="!selectedAddress">
             <button class="btn buttoncolor p-2 text-white button-primary" (click)="accountSelect = true"
               [disabled]="!loadedAccounts || loadedAccounts.length === 0">Selecione a conta</button>
@@ -17,7 +18,8 @@
 
             </div>
             <div class="row text-center">
-              <a href="javascript:void(0)" class="mb-3" (click)="accountSelect = false; selectedAddress = undefined;">Alterar
+              <a href="javascript:void(0)" class="mb-3"
+                (click)="accountSelect = false; selectedAddress = undefined;">Alterar
                 conta</a>
             </div>
 
@@ -33,7 +35,9 @@
               </div>
               <span class="text-danger" *ngIf="form.controls['password'].errors && form.controls['password'].dirty">
                 <p *ngIf="form.controls['password'].errors['required']"> Senha é obrigatória!</p>
-                <p *ngIf="form.controls['password'].errors['minlength'] || form.controls['password'].errors['maxlength']"> Senha
+                <p
+                  *ngIf="form.controls['password'].errors['minlength'] || form.controls['password'].errors['maxlength']">
+                  Senha
                   deve ter de 6 a 15 caracteres!</p>
               </span>
             </div>
@@ -59,7 +63,7 @@
     <aside *ngIf="accountSelect" class="col-sm-12 col-md-6">
       <div class="card">
         <div class="card-title">
-          <p class="text-center"><img src="./../../../assets/ziwallet-logo.png" width="290" ><br><br></p>
+          <p class="text-center"><img src="./../../../assets/ziwallet-logo.png" width="290"><br><br></p>
           <h4 class="mb-4 mt-1 text-center title-primary">Selecione a conta</h4>
         </div>
         <div class="card-body">

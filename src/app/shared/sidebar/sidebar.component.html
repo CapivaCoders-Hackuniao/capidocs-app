@@ -1,106 +1,34 @@
 <div class="bg-light shadow" id="sidebar-wrapper">
-    <div class="sidebar-heading">
-        <a [routerLink]="['/pages/home']"><img src="./../../../../assets/ziwallet-logo-horizontal.png" width="180"></a>
+    <div class="sidebar-heading p-5">
+        <a [routerLink]="['/pages/home']"><img src="../../../assets/icons/white-logo.svg" width="180"></a>
     </div>
     <ul class="nav flex-column">
         <li class="nav-item ">
-            <a [routerLink]="['/pages/home']" [routerLinkActive]="['item-active']" class="nav-link list-group-item-action colortext sidebar-menu"> <i
-                    class="fa fa-columns"></i>&nbsp; Home</a>
+            <a [routerLink]="['/pages/home']" [routerLinkActive]="['item-active']"
+                class="nav-link list-group-item-action colortext sidebar-menu"> <i class="fa fa-cube"></i>&nbsp;
+                Dashboard</a>
         </li>
         <li class="nav-item ">
-            <a [routerLink]="['/pages/wallet-details']" [routerLinkActive]="['item-active']" class="nav-link list-group-item-action colortext sidebar-menu">
-                <i class="fa fa-qrcode"></i>&nbsp; Depósito</a>
+            <a [routerLink]="['/pages/wallet-details']" [routerLinkActive]="['item-active']"
+                class="nav-link list-group-item-action colortext sidebar-menu">
+                <i class="fa fa-plus-square-o"></i>&nbsp; Upload de Doc</a>
         </li>
         <li class="nav-item ">
-            <a [routerLink]="['/pages/balanceof']" [routerLinkActive]="['item-active']" class="nav-link list-group-item-action colortext sidebar-menu"> <i
-                    class="fa fa-money"></i>&nbsp; Balanço</a>
+            <a [routerLink]="['/pages/balanceof']" [routerLinkActive]="['item-active']"
+                class="nav-link list-group-item-action colortext sidebar-menu"> <i class="fa fa-file-text-o"></i>&nbsp;
+                Solicitar assinatura</a>
         </li>
         <li class="nav-item ">
             <a href="{{blockchainExplorer}}address/{{address}}" target="_blank"
-                class="nav-link list-group-item-action colortext sidebar-menu"> <i class="fa fa-bar-chart"></i>
-                &nbsp; Transações</a>
+                class="nav-link list-group-item-action colortext sidebar-menu"> <i class="fa fa-pencil-square-o"></i>
+                &nbsp; Assinar Doc</a>
         </li>
         <li class="nav-item ">
-            <a [routerLink]="['/pages/allowance']" [routerLinkActive]="['item-active']" class="nav-link list-group-item-action colortext sidebar-menu"> <i
-                    class="fa fa-link"></i>&nbsp; Permissões</a>
+            <a [routerLink]="['/pages/allowance']" [routerLinkActive]="['item-active']"
+                class="nav-link list-group-item-action colortext sidebar-menu"> <i class="fa fa-user-o"></i>&nbsp;
+                Perfil</a>
         </li>
     </ul>
-
-    <div class="sidebar-title colortext shadow p-2 mt-2"><b>&nbsp;Transferência</b></div>
-
-    <ul class="nav flex-column">
-        <li class="nav-item ">
-            <a [routerLink]="['/pages/transfer']" [routerLinkActive]="['item-active']" class="nav-link list-group-item-action colortext sidebar-menu"> <i
-                    class="fa fa-exchange"></i> Transferência</a>
-        </li>
-        <li class="nav-item ">
-            <a [routerLink]="['/pages/transferFrom']" [routerLinkActive]="['item-active']" class="nav-link list-group-item-action colortext sidebar-menu"> <i
-                    class="fa fa-exchange"></i> Transferência para</a>
-        </li>
-
-    </ul>
-
-    <div class="sidebar-title colortext shadow p-2  mt-2"><b>&nbsp;Aprovação</b></div>
-
-    <ul class="nav flex-column">
-        <li class="nav-item ">
-            <a [routerLink]="['/pages/approve']" [routerLinkActive]="['item-active']" class="nav-link list-group-item-action colortext sidebar-menu"> <i
-                    class="fa fa-handshake-o"></i> Aprovar</a>
-        </li>
-        <li class="nav-item ">
-            <a [routerLink]="['/pages/increaseapproval']" [routerLinkActive]="['item-active']"
-                class="nav-link list-group-item-action colortext sidebar-menu"> <i class="fa fa-line-chart"></i>
-                Aumentar aprovação</a>
-        </li>
-
-        <li class="nav-item ">
-            <a [routerLink]="['/pages/decreaseapproval']" [routerLinkActive]="['item-active']"
-                class="nav-link list-group-item-action colortext sidebar-menu"> <i class="fa fa-level-down"></i>
-                Diminuir aprovação</a>
-        </li>
-
-    </ul>
-
-    <div class="sidebar-title colortext shadow p-2  mt-2" *ngIf="globals.user.isBurner||globals.user.isMinter">
-        <b>&nbsp;Fornecer</b></div>
-
-    <ul class="nav flex-column">
-        <li class="nav-item " *ngIf="globals.user.isMinter">
-            <a [routerLink]="['/pages/mint']" [routerLinkActive]="['item-active']" class="nav-link list-group-item-action colortext sidebar-menu"> <i
-                    class="fa fa-ticket"></i> Mint to</a>
-        </li>
-        <li class="nav-item " *ngIf="globals.user.isBurner">
-            <a [routerLink]="['/pages/burn']" [routerLinkActive]="['item-active']" class="nav-link list-group-item-action colortext sidebar-menu"> <i
-                    class="fa fa-fire"></i> Burn from</a>
-        </li>
-
-    </ul>
-
-    <div class="sidebar-title colortext shadow p-2  mt-2" *ngIf="globals.user.isAdmin"><b>&nbsp;Regras</b></div>
-
-    <ul class="nav flex-column" *ngIf="globals.user.isAdmin">
-        <li class="nav-item ">
-            <a [routerLink]="['/pages/addrole']" [routerLinkActive]="['item-active']" class="nav-link list-group-item-action colortext sidebar-menu"> <i
-                    class="fa fa-plus-circle"></i> Add regra</a>
-        </li>
-        <li class="nav-item ">
-            <a [routerLink]="['/pages/removerole']" [routerLinkActive]="['item-active']" class="nav-link list-group-item-action colortext sidebar-menu"> <i
-                    class="fa fa-minus-circle"></i> Remover regra</a>
-        </li>
-
-        <li class="nav-item ">
-            <a [routerLink]="['/pages/verifyrole']" [routerLinkActive]="['item-active']" class="nav-link list-group-item-action colortext sidebar-menu"> <i
-                    class="fa fa-check-circle"></i> Verificar regra</a>
-        </li>
-
-    </ul>
-    <!-- <div class="sidebar-title colortext shadow p-2"><b>&nbsp;Config</b></div>
-    <ul class="nav flex-column">
-        <li class="nav-item ">
-            <a [routerLink]="['/pages/config2fa']" class="nav-link list-group-item-action colortext sidebar-menu"> <i class="fa fa-lock"></i> 2FA</a>
-        </li>
-
-    </ul> -->
 
     <ul class="nav flex-column">
         <li class="nav-item">
