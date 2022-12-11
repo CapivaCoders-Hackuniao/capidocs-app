@@ -41,7 +41,7 @@ export class ProfileComponent implements OnInit {
     document.body.removeChild(selBox);
 
 
-    this.toastrService.success('Address to clipboard!', 'Success', {
+    this.toastrService.success('Endereço para a área de transferência!', 'Success', {
       progressBar: true
     });
   }

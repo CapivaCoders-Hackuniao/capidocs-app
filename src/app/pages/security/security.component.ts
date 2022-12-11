@@ -39,7 +39,7 @@ export class SecurityComponent implements OnInit {
     document.body.removeChild(selBox);
 
 
-    this.toastrService.success('Private key copied to clipboard!', 'Success', {
+    this.toastrService.success('Chave privada copiada para a área de transferência!', 'Success', {
       progressBar: true
     });
   }
@@ -58,7 +58,7 @@ export class SecurityComponent implements OnInit {
     document.body.removeChild(selBox);
 
 
-    this.toastrService.success('Mnemonic copied to clipboard!', 'Success', {
+    this.toastrService.success('Mnemonic copiado para a área de transferência!', 'Success', {
       progressBar: true
     });
   }
