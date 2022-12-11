@@ -27,7 +27,7 @@
             <div class="col-md-4"><br>
                 <label for="validate" class="font-archivo font-size-18 font-weight-medium color-blue-first">Selecione o documento para validar</label>
                 <select #documentToValidate class="form-control" id="documentToValidate" (input)="selectDocument(documentToValidate.value)">
-                    <option>Select one</option>
+                    <option>Selecione um</option>
                     <option *ngFor="let doc of globals.persona.documents">{{doc.fieldName}}</option>
                 </select>
             </div>
@@ -114,7 +114,7 @@
 
            
             <div class="col-md-2 btn-validate my-2 ">
-                <button type="button" class="btnX btn-primaryX mb-5 font-weight-semibold font-poppins font-size-16 mt-3 button-respon button-resp" [disabled]="documentToValidate.value==''||documentToValidate.value=='Select one'||!selectedValidator" (click)="sendToValidator()">
+                <button type="button" class="btnX btn-primaryX mb-5 font-weight-semibold font-poppins font-size-16 mt-3 button-respon button-resp" [disabled]="documentToValidate.value==''||documentToValidate.value=='Selecione um'||!selectedValidator" (click)="sendToValidator()">
                     Enviar para validar
             </button>
 

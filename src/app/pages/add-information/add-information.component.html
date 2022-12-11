@@ -52,7 +52,7 @@
                 <button type="button" class="btnX btn-secondX font-weight-semibold font-poppins font-size-16" style="width: 230px;" data-toggle="modal" data-target="#file">{{replace ? 'Substituir' : 'Adicionar'}} documento</button>
             </div>
             <div class="col-12 col-sm  mt-4">
-                <button type="button" class="btnX btn-primaryX font-weight-semibold font-poppins font-size-16 w-100" (click)="replace ? replaceDocument(documentToAdd.value, docValue.value, valueHash.value) : addDocument(documentToAdd.value, docValue.value, valueHash.value)" [disabled]="documentToAdd.value==''||documentToAdd.value=='Select one'||valueHash.value.length==0">Registrar</button>
+                <button type="button" class="btnX btn-primaryX font-weight-semibold font-poppins font-size-16 w-100" (click)="replace ? replaceDocument(documentToAdd.value, docValue.value, valueHash.value) : addDocument(documentToAdd.value, docValue.value, valueHash.value)" [disabled]="documentToAdd.value==''||documentToAdd.value=='Selecione um'||valueHash.value.length==0">Registrar</button>
 
             </div>
         </form>

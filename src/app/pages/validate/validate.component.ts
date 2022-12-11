@@ -77,7 +77,7 @@ export class ValidateComponent implements OnInit {
 	}
 
 	selectDocument(docName: string) {
-		if (docName == 'Select one') {
+		if (docName == 'Selecione um') {
 			this.selectedDocument = null;
 			this.listValidators = this.globals.registry.validators;
 		} else {
