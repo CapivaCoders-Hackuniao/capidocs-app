@@ -3,42 +3,30 @@
     <div class="containerX">
         <div class="col-sm-9 col-md-7 px-0">
             <form class="card-shadow col-sm-9 col-md-7 px-4 py-5" [formGroup]="form" (ngSubmit)="signin()">
-<<<<<<< Updated upstream
                 <h2 class="font-inter font-weight-bold font-size-32 color-blue-third">Sign in Account CapDocs</h2>
-                <p class="font-inter color-brown-primary m-0"><u class="cursor-pointer" [routerLink]="['/accounts/restore']">Restore</u> your account</p>
-
-                <div class="py-5">
-                    <label for="password" class="font-archivo font-size-18 font-weight-medium color-blue-first m-0">Password</label>
-                    <input type="text" id="password" name="password" type="password" formControlName="password" class="form-control font-size-14" [ngClass]="{ 'is-invalid': form.controls.password.invalid && form.controls.password.dirty, 'is-valid': form.controls.password.valid }" placeholder="Your password">
-
-                    <div class="color-red-primary" *ngIf="form.controls.password.invalid && form.controls.password.dirty">
-                        <p class="m-0" *ngIf="form.controls.password.errors.required">Password is required!</p>
-                        <p class="m-0" *ngIf="form.controls.password.errors.rangeLength">Password must be between 6 and 32 characters!</p>
-=======
-                <h2 class="font-inter font-weight-bold font-size-32 color-blue-third">Cadastre-se em CapDocs</h2>
                 <p class="font-inter color-brown-primary m-0"><u class="cursor-pointer"
-                        [routerLink]="['/accounts/restore']">Restaure</u> sua conta</p>
+                        [routerLink]="['/accounts/restore']">Restore</u> your account</p>
 
                 <div class="py-5">
                     <label for="password"
-                        class="font-archivo font-size-18 font-weight-medium color-blue-first m-0">Senha</label>
+                        class="font-archivo font-size-18 font-weight-medium color-blue-first m-0">Password</label>
                     <input type="text" id="password" name="password" type="password" formControlName="password"
                         class="form-control font-size-14"
                         [ngClass]="{ 'is-invalid': form.controls.password.invalid && form.controls.password.dirty, 'is-valid': form.controls.password.valid }"
-                        placeholder="Sua senha">
+                        placeholder="Your password">
 
                     <div class="color-red-primary"
                         *ngIf="form.controls.password.invalid && form.controls.password.dirty">
-                        <p class="m-0" *ngIf="form.controls.password.errors.required">Uma senha é obrigatória!</p>
-                        <p class="m-0" *ngIf="form.controls.password.errors.rangeLength">A senha deve conter no mínimo
-                            de 6 a 32 caracteres!</p>
->>>>>>> Stashed changes
+                        <p class="m-0" *ngIf="form.controls.password.errors.required">Password is required!</p>
+                        <p class="m-0" *ngIf="form.controls.password.errors.rangeLength">Password must be between 6 and
+                            32 characters!</p>
                     </div>
                 </div>
 
                 <div>
                     <button type="submit" class="btn-form btn-primaryX" [disabled]="form.invalid">Log in</button>
-                    <button class="btn-form btn-secondX mt-3" [routerLink]="['/accounts/create']">Create account</button>
+                    <button class="btn-form btn-secondX mt-3" [routerLink]="['/accounts/create']">Create
+                        account</button>
                 </div>
             </form>
         </div>
@@ -53,62 +41,34 @@
     <section class="d-flex justify-content-center align-items-center" style="height: 100vh;" *ngIf="globals.registry">
         <div class="w-100 modal-config card-shadow">
             <div class="modal-header d-flex align-items-center">
-<<<<<<< Updated upstream
                 <h5 class="color-blue-first font-weight-bold font-size-32 m-0" id="addModalLabel">Connected CapDocs</h5>
-=======
-                <h5 class="color-blue-first font-weight-bold font-size-32 m-0" id="addModalLabel">Conectado a CapDocs
-                </h5>
->>>>>>> Stashed changes
                 <img class="col-6 col-sm-3 pr-0" src="../../../assets/img-docs/capdocs-logo.svg" alt="">
             </div>
 
             <div class="modal-body py-5">
                 <ul class="col-md-5 my-0 mx-auto px-0">
                     <li class="py-3">
-<<<<<<< Updated upstream
-                        <h6 class="font-inter color-brown-primary mb-1 font-size-14"><span class="font-weight-medium">Welcome</span> {{globals.registry.name}}</h6>
-
-                        <label for="address" class="font-archivo font-size-18 font-weight-medium m-0">You are connected to the address</label>
-                        <input class="form-control color-blue-third font-size-14" type="text" name="address" id="address" value="{{globals.registry.address}}">
-                    </li>
-
-                    <li>
-                        <p class="font-inter color-brown-primary mb-1 font-size-14" *ngIf="globals.registryOwner">You are the owner of this Registry</p>
-                        <p class="font-inter color-brown-primary mb-1 font-size-14" *ngIf="globals.registryAccManager">You an admin of this Registry</p>
-
-                        <div *ngIf="globals.hasPersona">
-                            <p class="font-inter color-brown-primary mb-1 font-size-14">You have a Persona registry</p>
-                            <p class="font-inter color-brown-primary mb-1 font-size-14 text-break"><span class="font-weight-medium">Your Persona address:</span> {{globals.persona.address}}</p>
-                        </div>
-
-                        <div *ngIf="globals.hasValidator">
-                            <p class="font-inter color-brown-primary mb-1 font-size-14">You have a Validator registry</p>
-                            <p class="font-inter color-brown-primary mb-1 font-size-14 text-break"><span class="font-weight-medium">Your Validator address:</span> {{globals.validator.address}}</p>
-                        </div>
-                    </li>
-                    <li class="py-3">
-                        <button class="btn-form btn-primaryX" (click)="confirm()">Enter</button>
-                        <button *ngIf="globals.registryOwner||globals.registryAccManager" class="btn-form btn-form btn-primaryX" (click)="admin()">Admin Registry</button>
-=======
                         <h6 class="font-inter color-brown-primary mb-1 font-size-14"><span
-                                class="font-weight-medium">Bem-vindo a</span> {{globals.registry.name}}</h6>
+                                class="font-weight-medium">Welcome</span> {{globals.registry.name}}</h6>
 
-                        <label for="address" class="font-archivo font-size-18 font-weight-medium m-0">Você está
-                            conectado ao endereço</label>
-                        <input class="form-control color-blue-third font-size-14" type="text" name="address"
-                            id="address" value="{{globals.registry.address}}">
+                    <li class="py-3">
+                        <label for="balance" class="font-archivo font-size-18 font-weight-medium m-0">Your
+                            balance</label>
+                        <input class="form-control color-blue-third font-size-14" type="text" name="balance"
+                            id="balance" value="{{ globals.balance}} CELO">
+                        <p *ngIf="globals.balance === '0.0'">Você deve ter saldo em CELO para continuar</p>
                     </li>
 
                     <li>
-                        <p class="font-inter color-brown-primary mb-1 font-size-14" *ngIf="globals.registryOwner">Você é
-                            dono do registro</p>
+                        <p class="font-inter color-brown-primary mb-1 font-size-14" *ngIf="globals.registryOwner">You
+                            are the owner of this Registry</p>
                         <p class="font-inter color-brown-primary mb-1 font-size-14" *ngIf="globals.registryAccManager">
-                            Você é o administrador desse registro</p>
+                            You an admin of this Registry</p>
 
                         <div *ngIf="globals.hasPersona">
                             <p class="font-inter color-brown-primary mb-1 font-size-14">You have a Persona registry</p>
                             <p class="font-inter color-brown-primary mb-1 font-size-14 text-break"><span
-                                    class="font-weight-medium">Seu endereço Persona:</span> {{globals.persona.address}}
+                                    class="font-weight-medium">Your Persona address:</span> {{globals.persona.address}}
                             </p>
                         </div>
 
@@ -116,15 +76,14 @@
                             <p class="font-inter color-brown-primary mb-1 font-size-14">You have a Validator registry
                             </p>
                             <p class="font-inter color-brown-primary mb-1 font-size-14 text-break"><span
-                                    class="font-weight-medium">Seu endereço de Validação:</span>
+                                    class="font-weight-medium">Your Validator address:</span>
                                 {{globals.validator.address}}</p>
                         </div>
                     </li>
                     <li class="py-3">
-                        <button class="btn-form btn-primaryX" (click)="confirm()">Entrar</button>
+                        <button class="btn-form btn-primaryX" (click)="confirm()">Enter</button>
                         <button *ngIf="globals.registryOwner||globals.registryAccManager"
-                            class="btn-form btn-form btn-primaryX" (click)="admin()">Registrar admin</button>
->>>>>>> Stashed changes
+                            class="btn-form btn-form btn-primaryX" (click)="admin()">Admin Registry</button>
                     </li>
                 </ul>
             </div>
