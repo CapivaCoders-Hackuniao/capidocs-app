@@ -59,7 +59,8 @@ export class RestoreComponent {
 					this.router.navigate(['/accounts/signin']);
 				});
 			}
-		} catch {
+		} catch (err) {
+			console.log(err)
 			const toastr = this.toastrService.error('Erro ao restaurar a carteira!', '', {
 				progressBar: true,
 			});

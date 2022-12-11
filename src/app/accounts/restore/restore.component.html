@@ -1,7 +1,12 @@
-<div class="container mb-10">
-    <div class="row justify-content-center align-items-center">
-        <aside class="col-12 col-sm-12 col-md-6">
-            <div class="card">
+<div class="container-fluid">
+    <div class="d-flex justify-content-center align-items-center" style="min-height:100vh">
+        <div class="col-6 d-flex justify-content-center align-items-center">
+            <img src="../../../assets/docs-sign-in.svg" class="img-fluid" alt="">
+        </div>
+        <div class="col-md-6 col-12 bg-white shadow-lg d-flex justify-content-center align-items-center px-3"
+            style="min-height:100vh;height:100%; z-index: 1;">
+            <div>
+            <div>
                 <article class="card-body">
                     <p class="text-center"><img src="./../../../assets/capdocs-icon.svg" width="172" class="img-fluid"><br></p>
 
@@ -53,11 +58,11 @@
                         </div> -->
                         <div class="form-group mt-5 text-center buttons">
                             <button [routerLink]="['/accounts/signin']" class="btn btn-outline-secondary p-2 button-link float-start mb-5"> Voltar </button>
-                            <button type="submit" class="btn buttoncolor text-white button-primary float-end mb-5"> Confirmar </button>
+                            <button type="submit" class="btn button-confirm text-white button-primary float-end mb-5"> Confirmar </button>
                         </div>
                     </form>
                 </article>
             </div>
-        </aside>
+        </div>
     </div>
 </div>
