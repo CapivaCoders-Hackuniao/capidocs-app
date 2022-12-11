@@ -1,51 +1,72 @@
 <!-- ------------------------------ -->
 <div *ngIf="globals.registry&&!globals.hasPersona&&!globals.hasValidator">
-  <article class="px-4 py-5 justify-content-center align-items-center position-relative" style="min-height: 80vh; z-index: 1;">
+  <article class="px-4 py-5 justify-content-center align-items-center position-relative"
+    style="min-height: 80vh; z-index: 1;">
     <div class="containerX">
-      <h1 class="font-archivo font-size-44 color-blue-third font-weight-semibold text-center mt-3">Register</h1>
-      <p class="m-0 col-md-8 px-0 mx-auto text-center color-blue-first">You don't have a registration as a persona or validator yet, choose one and enter your name to create it!</p>
+      <h1 class="font-archivo font-size-44 color-blue-third font-weight-semibold text-center mt-3">Registrar</h1>
+      <p class="m-0 col-md-8 px-0 mx-auto text-center color-blue-first">Você ainda não tem cadastro como persona ou
+        validador, escolha um e digite seu nome para criá-los!</p>
 
       <ul class="card-shadow p-3 p-sm-5 d-flex flex-column flex-sm-row justify-content-between mt-4">
         <li class="col-sm-5 px-0 mr-sm-2" *ngIf="!globals.hasPersona">
 
-          <p *ngIf="globals.registry.requireRolePersona" class="font-weight-medium font-archivo font-size-18 color-blue-first">If desired, ask an admin to grant you Persona access</p>
+          <p *ngIf="globals.registry.requireRolePersona"
+            class="font-weight-medium font-archivo font-size-18 color-blue-first">Se desejar, peça a um administrador
+            para conceder acesso Persona a você</p>
 
           <div *ngIf="!globals.registry.requireRolePersona">
             <div [formGroup]="createPersonaFormGroup">
-              <label for="personaName" class="font-weight-medium font-archivo font-size-18 color-blue-first">You can create your Persona contract here:</label>
+              <label for="personaName" class="font-weight-medium font-archivo font-size-18 color-blue-first">Você pode
+                criar seu contrato Persona aqui:</label>
 
-              <input type="text" #personaName id="personaName" name="personaName" class="form-control" placeholder="Enter your name" formControlName="personaName" [ngClass]="{ 'is-invalid': createPersonaFormGroup.controls.personaName.invalid && createPersonaFormGroup.controls.personaName.dirty, 'is-valid': createPersonaFormGroup.controls.personaName.valid }">
+              <input type="text" #personaName id="personaName" name="personaName" class="form-control"
+                placeholder="Seu nome" formControlName="personaName"
+                [ngClass]="{ 'is-invalid': createPersonaFormGroup.controls.personaName.invalid && createPersonaFormGroup.controls.personaName.dirty, 'is-valid': createPersonaFormGroup.controls.personaName.valid }">
 
-              <button class="btn-form btn-primaryX mt-3" (click)="createPersona(personaName.value)" [disabled]="createPersonaFormGroup.invalid">Create persona</button>
+              <button class="btn-form btn-primaryX mt-3" (click)="createPersona(personaName.value)"
+                [disabled]="createPersonaFormGroup.invalid">Criar persona</button>
             </div>
-            <div class="color-red-primary" *ngIf="createPersonaFormGroup.controls.personaName.invalid && createPersonaFormGroup.controls.personaName.dirty">
-              <p class="m-0" *ngIf="createPersonaFormGroup.controls.personaName.errors.required">Name is required!</p>
-              <p class="m-0" *ngIf="createPersonaFormGroup.controls.personaName.errors.rangeLength">Name must be between 1 and 32 characters!</p>
+            <div class="color-red-primary"
+              *ngIf="createPersonaFormGroup.controls.personaName.invalid && createPersonaFormGroup.controls.personaName.dirty">
+              <p class="m-0" *ngIf="createPersonaFormGroup.controls.personaName.errors.required">Um nome é necessário
+              </p>
+              <p class="m-0" *ngIf="createPersonaFormGroup.controls.personaName.errors.rangeLength">O nome deve estar
+                entre
+                1 e 32 caracteres!</p>
             </div>
           </div>
         </li>
 
         <li class="col-sm-5 px-0 ml-sm-2 mt-5 mt-sm-0" *ngIf="!globals.hasValidator">
 
-          <p *ngIf="globals.registry.requireRoleValidator" class="font-weight-medium font-archivo font-size-18 color-blue-first">If desired, ask an admin to grant you Validator access</p>
+          <p *ngIf="globals.registry.requireRoleValidator"
+            class="font-weight-medium font-archivo font-size-18 color-blue-first">If desired, ask an admin to grant you
+            Validator access</p>
 
           <div *ngIf="!globals.registry.requireRoleValidator">
             <div [formGroup]="createValidatorFormGroup">
-              <label for="validatorName" class="font-weight-medium font-archivo font-size-18 color-blue-first">You can create your Validator contract here:</label>
+              <label for="validatorName" class="font-weight-medium font-archivo font-size-18 color-blue-first">
+                Você pode criar seu contrato Validator aqui:</label>
+              <input type="text" #validatorName id="validatorName" name="validatorName" class="form-control"
+                placeholder="Seu validator" formControlName="validatorName"
+                [ngClass]="{ 'is-invalid': createValidatorFormGroup.controls.validatorName.invalid && createValidatorFormGroup.controls.validatorName.dirty, 'is-valid': createValidatorFormGroup.controls.validatorName.valid }">
 
-              <input type="text" #validatorName id="validatorName" name="validatorName" class="form-control" placeholder="Enter your name" formControlName="validatorName" [ngClass]="{ 'is-invalid': createValidatorFormGroup.controls.validatorName.invalid && createValidatorFormGroup.controls.validatorName.dirty, 'is-valid': createValidatorFormGroup.controls.validatorName.valid }">
-
-              <button class="btn-form btn-primaryX mt-3" (click)="createValidator(validatorName.value)" [disabled]="createValidatorFormGroup.invalid">Create Validator</button>
+              <button class="btn-form btn-primaryX mt-3" (click)="createValidator(validatorName.value)"
+                [disabled]="createValidatorFormGroup.invalid">Criar Validator</button>
             </div>
-            <div class="color-red-primary" *ngIf="createValidatorFormGroup.controls.validatorName.invalid && createValidatorFormGroup.controls.validatorName.dirty">
-              <p class="m-0" *ngIf="createValidatorFormGroup.controls.validatorName.errors.required">Name is required!</p>
-              <p class="m-0" *ngIf="createValidatorFormGroup.controls.validatorName.errors.rangeLength">Name must be between 1 and 32 characters!</p>
+            <div class="color-red-primary"
+              *ngIf="createValidatorFormGroup.controls.validatorName.invalid && createValidatorFormGroup.controls.validatorName.dirty">
+              <p class="m-0" *ngIf="createValidatorFormGroup.controls.validatorName.errors.required">Name is required!
+              </p>
+              <p class="m-0" *ngIf="createValidatorFormGroup.controls.validatorName.errors.rangeLength">Name must be
+                between 1 and 32 characters!</p>
             </div>
           </div>
         </li>
       </ul>
     </div>
-    <section class="position-absolute banner-register"><img src="../../../assets/img-docs/img-register.png" alt=""></section>
+    <section class="position-absolute banner-register"><img src="../../../assets/img-docs/img-register.png" alt="">
+    </section>
   </article>
 
   <footer class="p-4 d-flex align-items-center justify-content-center border-blue-top mt-3">
@@ -65,7 +86,8 @@
         <div class="rounded-15 border p-4 d-flex align-items-center justify-content-center">
           <img src="../../../assets/img-docs/img-validador.svg" alt="">
         </div>
-        <p class="m-0 font-size-44 color-green-second font-weight-bold font-inter">{{globals.persona.validValidationsCount}}</p>
+        <p class="m-0 font-size-44 color-green-second font-weight-bold font-inter">
+          {{globals.persona.validValidationsCount}}</p>
         <p class="m-0 font-inter font-weight-medium font-size-18 color-brown-primary">Validated documents</p>
       </li>
 
@@ -73,7 +95,8 @@
         <div class="rounded-15 border p-4 d-flex align-items-center justify-content-center">
           <img src="../../../assets/img-docs/img-validador-time.svg" alt="">
         </div>
-        <p class="m-0 font-size-44 color-yellow-primary font-weight-bold font-inter">{{globals.persona.pendingValidationsCount}}</p>
+        <p class="m-0 font-size-44 color-yellow-primary font-weight-bold font-inter">
+          {{globals.persona.pendingValidationsCount}}</p>
         <p class="m-0 font-inter font-weight-medium font-size-18 color-brown-primary">Pending validations</p>
       </li>
 
@@ -81,7 +104,8 @@
         <div class="rounded-15 border p-4 d-flex align-items-center justify-content-center">
           <img src="../../../assets/img-docs/img-x.svg" alt="">
         </div>
-        <p class="m-0 font-size-44 color-red-primary font-weight-bold font-inter">{{globals.persona.invalidValidationsCount}}</p>
+        <p class="m-0 font-size-44 color-red-primary font-weight-bold font-inter">
+          {{globals.persona.invalidValidationsCount}}</p>
         <p class="m-0 font-inter font-weight-medium font-size-18 color-brown-primary">Invalidated documents</p>
       </li>
     </ul>
@@ -100,21 +124,28 @@
           </thead>
 
           <tbody>
-            <tr scope="row" class="py-1" *ngFor="let item of globals.persona.documents | paginate: { itemsPerPage: 4, currentPage: pagination }; let i = index">
+            <tr scope="row" class="py-1"
+              *ngFor="let item of globals.persona.documents | paginate: { itemsPerPage: 4, currentPage: pagination }; let i = index">
               <td class="py-3 line-height-27 ">{{i}}</td>
               <td class="py-3 line-height-27 ">{{item.fieldName}}</td>
 
               <td *ngIf="!showValues[i]" class="d-flex">
-                <input type="text" class="form-control color-blue-third font-size-14 font-inter" value="{{item.value}}" style="min-width: 120px;">
-                <button class="ml-4 btn bg-transparent border-0" (click)="decryptValue(item, i)"><img src="../../../assets/img-docs/img-olho-value.svg" alt=""></button>
+                <input type="text" class="form-control color-blue-third font-size-14 font-inter" value="{{item.value}}"
+                  style="min-width: 120px;">
+                <button class="ml-4 btn bg-transparent border-0" (click)="decryptValue(item, i)"><img
+                    src="../../../assets/img-docs/img-olho-value.svg" alt=""></button>
               </td>
 
               <td *ngIf="showValues[i]" class="d-flex">
-                <input type="text" class="form-control color-blue-third font-size-14 font-inter" value="{{item.decryptValue}}" style="min-width: 120px;">
-                <button class="ml-4 btn bg-transparent border-0" (click)="showValues[i]=false"><img src="../../../assets/img-docs/img-visualizar.svg" alt=""></button>
+                <input type="text" class="form-control color-blue-third font-size-14 font-inter"
+                  value="{{item.decryptValue}}" style="min-width: 120px;">
+                <button class="ml-4 btn bg-transparent border-0" (click)="showValues[i]=false"><img
+                    src="../../../assets/img-docs/img-visualizar.svg" alt=""></button>
               </td>
 
-              <td class="py-3 line-height-27" [ngClass]="{'color-green-second': item.validationStatus == 2, 'color-yellow-primary': item.validationStatus == 1, 'color-red-primary': item.validationStatus >= 3}">{{item.validationStatusName}}</td>
+              <td class="py-3 line-height-27"
+                [ngClass]="{'color-green-second': item.validationStatus == 2, 'color-yellow-primary': item.validationStatus == 1, 'color-red-primary': item.validationStatus >= 3}">
+                {{item.validationStatusName}}</td>
             </tr>
           </tbody>
         </table>
@@ -142,7 +173,8 @@
         <div class="rounded-15 border p-4 d-flex align-items-center justify-content-center">
           <img src="../../../assets/img-docs/img-validador.svg" alt="">
         </div>
-        <p class="m-0 font-size-44 color-green-second font-weight-bold font-inter">{{globals.validator.validatedCount}}</p>
+        <p class="m-0 font-size-44 color-green-second font-weight-bold font-inter">{{globals.validator.validatedCount}}
+        </p>
         <p class="m-0 font-inter font-weight-medium font-size-18 color-brown-primary">Totaol Processed</p>
       </li>
 
@@ -170,7 +202,8 @@
 
           <tbody>
 
-            <tr scope="row" class="py-1" *ngFor="let item of globals.validator.pendingValidations | paginate: { itemsPerPage: 4, currentPage: pagination }; let i = index">
+            <tr scope="row" class="py-1"
+              *ngFor="let item of globals.validator.pendingValidations | paginate: { itemsPerPage: 4, currentPage: pagination }; let i = index">
               <td class="py-3">{{i}}</td>
               <td class="py-3">{{item.persona}}</td>
               <td class="py-3">{{item.document}}</td>
@@ -186,4 +219,3 @@
 
   </section>
 </div>
-

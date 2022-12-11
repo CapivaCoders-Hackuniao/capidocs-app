@@ -1,48 +1,66 @@
-<article class="px-4 py-5 d-flex align-items-center justify-content-center justify-content-sm-end position-relative" style="min-height: 80vh;">
+<article class="px-4 py-5 d-flex align-items-center justify-content-center justify-content-sm-end position-relative"
+	style="min-height: 80vh;">
 	<div class="containerX">
 		<div class="col-sm-9 col-md-7 px-0">
 			<form class="card-shadow col-sm-9 col-md-7 px-4 py-5" (ngSubmit)="restore()" [formGroup]="form">
+<<<<<<< Updated upstream
 				<h2 class="font-inter font-weight-bold font-size-32 color-blue-third">Restore Account CapDocs</h2>
+=======
+				<h2 class="font-inter font-weight-bold font-size-32 color-blue-third">Restaure sua conta CapDocs</h2>
+>>>>>>> Stashed changes
 
 				<div class="pt-1">
-					<label class="font-archivo font-size-18 font-weight-medium color-blue-first m-0" for="meneumonic">Mneumonic phrase</label>
+					<label class="font-archivo font-size-18 font-weight-medium color-blue-first m-0" for="meneumonic">Frase
+						mnemônica</label>
 					<textarea class="form-control" id="mneumonic" name="mneumonic" rows="3" formControlName="mneumonic" [ngClass]="{
 										'is-invalid': form.controls.mneumonic.invalid && form.controls.mneumonic.dirty,
 										'is-valid': form.controls.mneumonic.valid
 									}" style="resize: none;"></textarea>
 					<span class="text-danger" *ngIf="form.controls.mneumonic.invalid && form.controls.mneumonic.dirty">
-						<p *ngIf="form.controls.mneumonic.errors.required">Mneumonic is required!</p>
+						<p *ngIf="form.controls.mneumonic.errors.required">Frase mnemônica é necessária!</p>
 					</span>
 				</div>
 
 				<div class="py-2">
-					<label class="font-archivo font-size-18 font-weight-medium color-blue-first m-0" for="password">Password</label>
-					<input id="password" name="password" class="form-control" type="password" formControlName="password" [ngClass]="{
+					<label class="font-archivo font-size-18 font-weight-medium color-blue-first m-0" for="password">Senha</label>
+					<input id="password" name="password" class="form-control" type="password" formControlName="password"
+						[ngClass]="{
 						'is-invalid': form.controls.password.invalid && form.controls.password.dirty,
 						'is-valid': form.controls.password.valid
 					}" />
 					<span class="text-danger" *ngIf="form.controls.password.invalid && form.controls.password.dirty">
-						<p *ngIf="form.controls.password.errors.required">password is required!</p>
-						<p *ngIf="form.controls.password.errors.rangeLength">password must contain 6 to 15 characters!</p>
+						<p *ngIf="form.controls.password.errors.required">uma senha é necessária!</p>
+						<p *ngIf="form.controls.password.errors.rangeLength">a senha deve conter de 6 a 15 caracteres!</p>
 					</span>
 				</div>
 
 				<div class="py-2">
-					<label class="font-archivo font-size-18 font-weight-medium color-blue-first m-0" for="confirmPassword">Confirm password</label>
-					<input id="confirmPassword" name="confirmPassword" class="form-control" type="password" formControlName="confirmPassword" [ngClass]="{
+					<label class="font-archivo font-size-18 font-weight-medium color-blue-first m-0"
+						for="confirmPassword">Confirme seu password</label>
+					<input id="confirmPassword" name="confirmPassword" class="form-control" type="password"
+						formControlName="confirmPassword" [ngClass]="{
 						'is-invalid': form.controls.confirmPassword.invalid && form.controls.confirmPassword.dirty,
 						'is-valid': form.controls.confirmPassword.valid
 					}" />
+<<<<<<< Updated upstream
 					<span class="text-danger" *ngIf="form.controls.confirmPassword.invalid && form.controls.confirmPassword.dirty">
 						<p *ngIf="form.controls.confirmPassword.errors.required">Confirm password is required!</p>
 						<p *ngIf="form.controls.confirmPassword.errors.rangeLength">Password must be between 6 and 32 characters!</p>
 						<p *ngIf="form.controls.confirmPassword.errors.equalTo">Confirm password must be equal password!</p>
+=======
+					<span class="text-danger"
+						*ngIf="form.controls.confirmPassword.invalid && form.controls.confirmPassword.dirty">
+						<p *ngIf="form.controls.confirmPassword.errors.required">uma senha de confirmação é necessária!</p>
+						<p *ngIf="form.controls.confirmPassword.errors.rangeLength">A senha deve conter no mínimo de 6 a 32
+							caracteres!</p>
+						<p *ngIf="form.controls.confirmPassword.errors.equalTo">A senha de confirmação deve ser igual sua senha!</p>
+>>>>>>> Stashed changes
 					</span>
 				</div>
 
 				<div class="mt-3">
-					<button type="submit" class="btn-form btn-primaryX">Restore</button>
-					<button class="btn-form btn-secondX mt-3" [routerLink]="['/accounts/signin']">Back</button>
+					<button type="submit" class="btn-form btn-primaryX">Restaurar</button>
+					<button class="btn-form btn-secondX mt-3" [routerLink]="['/accounts/signin']">Voltar</button>
 				</div>
 			</form>
 		</div>
