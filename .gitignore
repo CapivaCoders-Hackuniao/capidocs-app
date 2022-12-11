@@ -1,5 +1,6 @@
 # Node artifact files
 node_modules/
+.expo/
 .angular/
 dist/
 npm-debug.*
