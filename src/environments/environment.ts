@@ -4,7 +4,7 @@
 
 export const environment = {
 	production: true,
-	blockchainNode: "https://celo-alfajores.infura.io/v3/ad501d4665a343b0a49421de3de7a473",
+	blockchainNode: "https://celo-alfajores.infura.io/v3/4914a0f028a14bdeaf29df3a588aad2f",
 	docsList: [
 		"Prova de nome",
 		"Prova de aniversário",
